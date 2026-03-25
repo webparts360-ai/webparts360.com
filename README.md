@@ -46,6 +46,29 @@ This repo already includes a deployment workflow at `.github/workflows/deploy-pa
 - Cost: free tier available
 - Best for: tight Azure integration
 
+## Custom domain on GitHub Pages
+
+This repository includes a `CNAME` file set to `www.webparts360.com`.
+
+### DNS records to add at your domain provider
+
+1. `www` CNAME -> `webparts360-ai.github.io`
+2. Root domain (`webparts360.com`) A records:
+	- `185.199.108.153`
+	- `185.199.109.153`
+	- `185.199.110.153`
+	- `185.199.111.153`
+
+### GitHub Pages settings
+
+1. Open repository `Settings` -> `Pages`.
+2. Set `Custom domain` to `www.webparts360.com`.
+3. Ensure `Enforce HTTPS` is enabled after DNS propagation.
+
+### Expected propagation time
+
+- Usually 5 minutes to 24 hours depending on DNS TTL and registrar.
+
 ## Form handling
 
 The contact form currently uses a placeholder Formspree action URL.
