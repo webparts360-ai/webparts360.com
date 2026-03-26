@@ -1,211 +1,1744 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Webparts360 helps organizations run mission-critical workflows inside Microsoft 365 with SmartBPM, SiteSnap, and configurable forms.">
-  <title>Webparts360 | Run Your Business Within Microsoft 365</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartBPM by WebParts360 — Workflow Automation Inside Microsoft Teams</title>
+  <meta name="description" content="SmartBPM is a Microsoft Teams workflow quick-start solution for SMBs. Automate approvals, digitise processes and accelerate digital transformation — without replacing your existing tools." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       DESIGN TOKENS & RESET
+    ============================================= */
+    :root {
+      --green:       #71BF44;
+      --blue:        #1B8FCE;
+      --amber:       #F9A51C;
+      --dark:        #0F1F2E;
+      --dark-alt:    #1A2E3F;
+      --text:        #2D3748;
+      --text-light:  #718096;
+      --bg:          #F7F9FC;
+      --white:       #FFFFFF;
+      --border:      #E2E8F0;
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   20px;
+      --shadow-sm:   0 2px 8px rgba(0,0,0,0.07);
+      --shadow-md:   0 8px 32px rgba(0,0,0,0.10);
+      --shadow-lg:   0 20px 60px rgba(0,0,0,0.14);
+      --transition:  all 0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* =============================================
+       UTILITY CLASSES
+    ============================================= */
+    .badge {
+      display: inline-block;
+      background: rgba(113,191,68,0.12);
+      color: var(--green);
+      border: 1px solid rgba(113,191,68,0.3);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .badge--blue {
+      background: rgba(27,143,206,0.10);
+      color: var(--blue);
+      border-color: rgba(27,143,206,0.25);
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .highlight-green { color: var(--green); }
+    .highlight-blue  { color: var(--blue); }
+    .highlight-amber { color: var(--amber); }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(113,191,68,0.35);
+    }
+    .btn-primary:hover {
+      background: #5da835;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(113,191,68,0.45);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--blue);
+      border: 2px solid var(--blue);
+    }
+    .btn-secondary:hover {
+      background: var(--blue);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--dark);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(249,165,28,0.35);
+    }
+    .btn-amber:hover {
+      background: #e0921a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(249,165,28,0.45);
+    }
+
+    .btn-lg {
+      font-size: 1.05rem;
+      padding: 1rem 2.5rem;
+    }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text__main {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .logo-text__sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .navbar__product {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .product-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+    }
+
+    .product-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .product-tag {
+      font-size: 0.65rem;
+      background: rgba(249,165,28,0.15);
+      color: var(--amber);
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio (9 ÷ 16 = 0.5625) */
+    border-radius: 8px;  /* optional: rounded corners */
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18); /* optional: subtle shadow */
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .navbar__cta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* =============================================
+       HERO SECTION
+    ============================================= */
+    .hero {
+      background: linear-gradient(160deg, var(--dark) 0%, var(--dark-alt) 60%, #1a3a52 100%);
+      padding: 6rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(27,143,206,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(113,191,68,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .teams-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .teams-badge__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero__title {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__title .line-accent {
+      background: linear-gradient(90deg, var(--green), var(--amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero__trust {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+
+    .trust-item svg {
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* Hero Visual Card */
+    .hero__visual {
+      position: relative;
+    }
+
+    .app-mockup {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .mockup-topbar {
+      background: rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .topbar-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .mockup-body { padding: 1.5rem; }
+
+    .workflow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.85rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 0.75rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: var(--transition);
+    }
+
+    .workflow-step:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .step-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .step-content { flex: 1; }
+
+    .step-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .step-desc {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .step-status {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 50px;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .status-approved {
+      background: rgba(113,191,68,0.2);
+      color: var(--green);
+    }
+    .status-pending {
+      background: rgba(249,165,28,0.2);
+      color: var(--amber);
+    }
+    .status-review {
+      background: rgba(27,143,206,0.2);
+      color: #5bb8e8;
+    }
+
+    .mockup-footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mockup-footer-text {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .mockup-footer-stat {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    /* Floating notification */
+    .floating-notif {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: var(--shadow-lg);
+      max-width: 230px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    .notif-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(113,191,68,0.12);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .notif-text { line-height: 1.3; }
+    .notif-title { font-size: 0.75rem; font-weight: 700; color: var(--dark); }
+    .notif-sub   { font-size: 0.68rem; color: var(--text-light); }
+
+    /* =============================================
+       PROBLEM SECTION
+    ============================================= */
+    .problem {
+      padding: 5rem 0;
+      background: var(--white);
+    }
+
+    .problem__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .problem-card {
+      padding: 1.75rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber), var(--green));
+    }
+
+    .problem-emoji {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .problem-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .problem-text {
+      font-size: 0.875rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    /* =============================================
+       SOLUTION BRIDGE
+    ============================================= */
+    .bridge {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bridge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .bridge__inner { position: relative; z-index: 1; }
+
+    .bridge__title {
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .bridge__subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    /* =============================================
+       FEATURES SECTION
+    ============================================= */
+    .features {
+      padding: 5.5rem 0;
+      background: var(--bg);
+    }
+
+    .features__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(27,143,206,0.2);
+    }
+
+    .feature-card--featured {
+      border-color: var(--green);
+      box-shadow: 0 0 0 1px var(--green), var(--shadow-md);
+    }
+
+    .feature-card--featured::after {
+      content: 'Most Popular';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--green);
+      color: white;
+      padding: 0.25rem 0.6rem;
+      border-radius: 50px;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .icon-green { background: rgba(113,191,68,0.12); }
+    .icon-blue  { background: rgba(27,143,206,0.12); }
+    .icon-amber { background: rgba(249,165,28,0.12); }
+
+    .feature-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-text {
+      font-size: 0.875rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* =============================================
+       HOW IT WORKS
+    ============================================= */
+    .how {
+      padding: 5.5rem 0;
+      background: var(--white);
+    }
+
+    .how__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .how__steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--blue), var(--amber), var(--green));
+      z-index: 0;
+    }
+
+    .how-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .how-step__number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin: 0 auto 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .num-1 { background: var(--green); }
+    .num-2 { background: var(--blue); }
+    .num-3 { background: var(--amber); }
+    .num-4 { background: var(--green); }
+
+    .how-step__title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .how-step__text {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    /* =============================================
+       INTEGRATIONS
+    ============================================= */
+    .integrations {
+      padding: 4rem 0;
+      background: var(--bg);
+      text-align: center;
+    }
+
+    .integrations__label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 1.75rem;
+    }
+
+    .integrations__logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .integration-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .integration-pill:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .integration-pill span { font-size: 1.1rem; }
+
+    /* =============================================
+       TESTIMONIALS
+    ============================================= */
+    .testimonials {
+      padding: 5.5rem 0;
+      background: var(--white);
+    }
+
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .testimonial-card--featured {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+      border-color: transparent;
+    }
+
+    .testimonial-card--featured .testimonial-quote,
+    .testimonial-card--featured .testimonial-name {
+      color: var(--white);
+    }
+
+    .testimonial-card--featured .testimonial-role,
+    .testimonial-card--featured .testimonial-company {
+      color: rgba(255,255,255,0.55);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 0.2rem;
+      margin-bottom: 1rem;
+      color: var(--amber);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-quote {
+      font-size: 0.925rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .avatar-green { background: linear-gradient(135deg, var(--green), #5da835); }
+    .avatar-blue  { background: linear-gradient(135deg, var(--blue), #1670a8); }
+    .avatar-amber { background: linear-gradient(135deg, var(--amber), #d4880f); }
+
+    .testimonial-name {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .testimonial-role {
+      font-size: 0.775rem;
+      color: var(--text-light);
+    }
+
+    .testimonial-company {
+      font-size: 0.72rem;
+      color: var(--blue);
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+
+    /* =============================================
+       STATS STRIP
+    ============================================= */
+    .stats {
+      padding: 3.5rem 0;
+      background: linear-gradient(135deg, var(--blue) 0%, #1470a3 100%);
+    }
+
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item { color: var(--white); }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      opacity: 0.75;
+      font-weight: 500;
+    }
+
+    .stat-accent { color: var(--amber); }
+
+    /* =============================================
+       CTA SECTION
+    ============================================= */
+    .cta {
+      padding: 6rem 0;
+      background: var(--bg);
+    }
+
+    .cta__card {
+      background: linear-gradient(135deg, var(--dark) 0%, #1a3a52 100%);
+      border-radius: var(--radius-lg);
+      padding: 4rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta__card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(113,191,68,0.12) 0%, transparent 60%);
+    }
+
+    .cta__card::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(27,143,206,0.1) 0%, transparent 60%);
+    }
+
+    .cta__inner { position: relative; z-index: 1; }
+
+    .cta__title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .cta__subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .cta__actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta__reassurance {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .reassurance-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .reassurance-item::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .footer {
+      background: var(--dark);
+      padding: 3rem 0 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer__brand { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .footer__tagline {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.25rem;
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer__links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .footer__links a:hover { color: var(--green); }
+
+    .footer__bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer__copy {
+      font-size: 0.775rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer__ms-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 900px) {
+      .hero__inner      { grid-template-columns: 1fr; gap: 3rem; }
+      .hero__visual     { order: -1; }
+      .features__grid   { grid-template-columns: repeat(2, 1fr); }
+      .problem__grid    { grid-template-columns: repeat(2, 1fr); }
+      .testimonials__grid { grid-template-columns: 1fr; }
+      .how__steps       { grid-template-columns: repeat(2, 1fr); }
+      .how__steps::before { display: none; }
+      .stats__grid      { grid-template-columns: repeat(2, 1fr); }
+      .navbar__product  { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .features__grid   { grid-template-columns: 1fr; }
+      .problem__grid    { grid-template-columns: 1fr; }
+      .how__steps       { grid-template-columns: 1fr; }
+      .stats__grid      { grid-template-columns: repeat(2, 1fr); }
+      .cta__card        { padding: 2.5rem 1.5rem; }
+      .navbar__cta .btn-secondary { display: none; }
+      .floating-notif   { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <div class="bg-orb orb-a" aria-hidden="true"></div>
-  <div class="bg-orb orb-b" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="#top" class="brand">webparts360</a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-        <a href="#solutions">Solutions</a>
-        <a href="#why">Why Us</a>
-        <a href="#stories">Stories</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <!-- =============================================
+       NAVBAR
+  ============================================= -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar__inner">
+
+        <a href="#" class="navbar__logo">
+         <img src="W360Logo.svg" height="60" style="display:block;">    
+        </a>
+
+        <div class="navbar__product">
+          <div class="product-dot"></div>
+          <span class="product-name">SmartBPM</span>
+          <span class="product-tag">For Teams</span>
+        </div>
+
+        <div class="navbar__cta">
+          <a href="#features" class="btn btn-secondary">See Features</a>
+          <a href="#connect" class="btn btn-primary">Book Demo</a>
+        </div>
+
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main id="top">
-    <section class="hero container reveal">
-      <p class="eyebrow">Microsoft 365 transformation partner</p>
-      <h1>Run your business within Microsoft 365.</h1>
-      <p class="lede">
-        Unlock the full value of Teams and SharePoint with secure workflows,
-        mobile-first reporting, and AI-assisted process automation.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#contact">Book Demo</a>
-        <a class="btn btn-ghost" href="#solutions">Explore Services</a>
-      </div>
-      <ul class="quick-metrics" aria-label="Highlights">
-        <li><strong>18+ years</strong> enterprise process modernization</li>
-        <li><strong>M365 native</strong> Teams, SharePoint, Planner integration</li>
-        <li><strong>Fast delivery</strong> reuse your current Microsoft stack</li>
-      </ul>
-    </section>
+  <!-- =============================================
+       HERO
+  ============================================= -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__inner">
 
-    <section id="solutions" class="section container reveal">
-      <div class="section-head">
-        <p class="eyebrow">Comprehensive Microsoft 365 solutions</p>
-        <h2>Elevating Microsoft 365 workloads</h2>
-      </div>
+        <div class="hero__content">
+          <div class="hero__eyebrow">
+            <div class="teams-badge">
+              <span class="teams-badge__dot"></span>
+              Runs natively inside Microsoft Teams
+            </div>
+          </div>
 
-      <div class="cards">
-        <article class="card">
-          <h3>SmartBPM</h3>
-          <p>
-            Design and deploy state-machine approvals with escalations,
-            auditable histories, and role-aware routing. Add AI where it cuts
-            manual effort and improves decision quality.
+          <h1 class="hero__title">
+            Your Team Is Already<br />
+            in Teams. Now Make<br />
+            <span class="line-accent">Work Actually Work.</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            SmartBPM is a ready-to-deploy workflow starter for Microsoft Teams.
+            Digitise your approvals, automate your operations, and connect your
+            business systems — in weeks, not months. No coding required on your end.
           </p>
-          <p class="tag">Teams automation + governance</p>
-        </article>
 
-        <article class="card">
-          <h3>SiteSnap</h3>
-          <p>
-            Turn mobile devices into real-time progress reporting tools. Capture
-            photos and field data, sync to SharePoint, and publish updates into
-            Teams channels automatically.
-          </p>
-          <p class="tag">Frontline mobility + project visibility</p>
-        </article>
+          <div class="hero__actions">
+            <a href="#connect" class="btn btn-primary btn-lg">
+              Book a Free Discovery Call
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#how" class="btn btn-white btn-lg">See How It Works</a>
+          </div>
 
-        <article class="card">
-          <h3>Configurable Forms</h3>
-          <p>
-            Collect structured data from suppliers, contractors, and customers
-            without extra Microsoft 365 licensing complexity, while preserving
-            validation and security rules.
-          </p>
-          <p class="tag">External gateway + compliant intake</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="why" class="section section-alt reveal">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Why choose Webparts360</p>
-          <h2>Built for business-critical Microsoft 365 operations</h2>
+          <div class="hero__trust">
+            <div class="trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              No new software licences
+            </div>
+            <div class="trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Live in 2–4 weeks
+            </div>
+            <div class="trust-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              No IT team needed
+            </div>
+          </div>
         </div>
 
-        <div class="feature-grid">
-          <article>
-            <h3>Tailored solutions</h3>
-            <p>
-              Industry-aware architecture for finance, healthcare,
-              manufacturing, and service teams that need secure, practical
-              delivery over generic templates.
-            </p>
-          </article>
-          <article>
-            <h3>Advanced integration</h3>
-            <p>
-              Connect SharePoint, Teams, SQL, APIs, and cloud services into one
-              reliable operating layer with clean data flow and traceability.
-            </p>
-          </article>
-          <article>
-            <h3>Dedicated support</h3>
-            <p>
-              Hands-on rollout, enablement, and continuous improvement to ensure
-              your teams gain adoption and measurable outcomes.
-            </p>
-          </article>
+        <div class="hero__visual">
+          <div class="app-mockup">
+            <div class="mockup-topbar">
+              <div class="topbar-dot" style="background:#F9A51C"></div>
+              <div class="topbar-dot" style="background:#71BF44"></div>
+              <div class="topbar-dot" style="background:#1B8FCE"></div>
+              <span style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-left:0.5rem;">SmartBPM — Pending Workflows</span>
+            </div>
+            <div class="mockup-body">
+              <div class="workflow-step">
+                <div class="step-icon icon-green">📋</div>
+                <div class="step-content">
+                  <div class="step-title">Purchase Request — Q4 Office Supplies</div>
+                  <div class="step-desc">Submitted by Sarah T. · $2,400 · Awaiting finance approval</div>
+                </div>
+                <div class="step-status status-pending">Pending</div>
+              </div>
+              <div class="workflow-step">
+                <div class="step-icon icon-blue">🏖️</div>
+                <div class="step-content">
+                  <div class="step-title">Leave Application — Annual Leave (5 days)</div>
+                  <div class="step-desc">Submitted by James R. · 3 Nov – 7 Nov · Approved by HR</div>
+                </div>
+                <div class="step-status status-approved">Approved ✓</div>
+              </div>
+              <div class="workflow-step">
+                <div class="step-icon icon-amber">🔍</div>
+                <div class="step-content">
+                  <div class="step-title">Vendor Onboarding — Tech Supplies Sdn Bhd</div>
+                  <div class="step-desc">New vendor registration · Under procurement review</div>
+                </div>
+                <div class="step-status status-review">In Review</div>
+              </div>
+              <div class="workflow-step">
+                <div class="step-icon icon-green">💰</div>
+                <div class="step-content">
+                  <div class="step-title">Expense Claim — Client Entertainment</div>
+                  <div class="step-desc">Submitted by Priya M. · $340 · Receipt attached</div>
+                </div>
+                <div class="step-status status-approved">Approved ✓</div>
+              </div>
+            </div>
+            <div class="mockup-footer">
+              <span class="mockup-footer-text">4 workflows active · Last updated 2 min ago</span>
+              <span class="mockup-footer-stat">↑ 3 approvals today</span>
+            </div>
+          </div>
+
+          <div class="floating-notif">
+            <div class="notif-icon">✅</div>
+            <div class="notif-text">
+              <div class="notif-title">Purchase request approved!</div>
+              <div class="notif-sub">Written back to Xero · Just now</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PROBLEM SECTION
+  ============================================= -->
+  <section class="problem">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">The Problem We Solve</div>
+        <h2 class="section-title">Sound Like Your Business Right Now?</h2>
+        <p class="section-subtitle">
+          Most growing businesses are running critical operations on tools
+          that were never designed for it. Here's what we fix.
+        </p>
+      </div>
+
+      <div class="problem__grid">
+        <div class="problem-card">
+          <div class="problem-emoji">📱</div>
+          <div class="problem-title">Approvals lost in WhatsApp groups</div>
+          <div class="problem-text">
+            Purchase requests, leave applications, and client discounts approved
+            over chat — with no record, no accountability, and no audit trail.
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-emoji">📊</div>
+          <div class="problem-title">Operations tracked in spreadsheets</div>
+          <div class="problem-text">
+            Version conflicts, manual updates, and zero automation.
+            Every status check requires someone to open a file and
+            hunt for the latest row.
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-emoji">🔌</div>
+          <div class="problem-title">ERP and accounting data siloed</div>
+          <div class="problem-text">
+            Your team can't see stock levels, invoices, or customer
+            account status without logging into systems they barely
+            know how to use.
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-emoji">📁</div>
+          <div class="problem-title">Documents scattered everywhere</div>
+          <div class="problem-text">
+            Policies, SOPs, supplier contracts, and onboarding docs
+            across personal drives, email threads, and saved WhatsApp
+            messages. Impossible to find, impossible to keep current.
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-emoji">🔄</div>
+          <div class="problem-title">Microsoft 365 sitting idle</div>
+          <div class="problem-text">
+            You pay for Teams and SharePoint every month.
+            Your team uses it for calls and file storage.
+            You are leaving enormous operational value untouched.
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-emoji">⏳</div>
+          <div class="problem-title">Digital transformation stuck at planning</div>
+          <div class="problem-text">
+            You know the business needs to modernise. But every
+            solution you've looked at is too expensive, too complex,
+            or requires replacing tools that already work.
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="stories" class="section container reveal">
-      <div class="section-head">
-        <p class="eyebrow">Client success stories</p>
-        <h2>Proven outcomes</h2>
+  <!-- =============================================
+       SOLUTION BRIDGE
+  ============================================= -->
+  <section class="bridge">
+    <div class="container">
+      <div class="bridge__inner">
+        <div class="badge badge--blue">Introducing SmartBPM</div>
+        <h2 class="bridge__title">
+          The Quickest Path to a<br />
+          <span style="color:var(--green)">Digital Operating Business</span><br />
+          — Inside Teams.
+        </h2>
+        <p class="bridge__subtitle">
+          SmartBPM is Webparts360's pre-built workflow quick-start solution for
+          Microsoft Teams. We configure and deploy your core business workflows —
+          approvals, forms, document management, and ERP integration —
+          in weeks, using the M365 licences you already own.
+        </p>
+        <a href="#connect" class="btn btn-amber btn-lg">
+          Find Out If SmartBPM Is Right for You
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FEATURES
+  ============================================= -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What SmartBPM Includes</div>
+        <h2 class="section-title">Everything You Need to Run<br />Operations Inside Teams</h2>
+        <p class="section-subtitle">
+          Six core capabilities, pre-built and ready to configure for your
+          business — deployed as a Teams Add-in or SharePoint app.
+        </p>
       </div>
 
-      <div class="quotes" role="list">
-        <blockquote class="quote" role="listitem">
-          <p>
-            By automating our long-running manual prime broker margin call
-            reporting process, Webparts360 helped us rebalance faster and
-            optimize requirements across multiple accounts.
-          </p>
-          <cite>Roland, Australian hedge fund</cite>
-        </blockquote>
+      <div class="features__grid">
 
-        <blockquote class="quote" role="listitem">
-          <p>
-            We transformed SharePoint into a dynamic workflow system for our
-            accounts and marketing teams with API integration into SAP,
-            improving efficiency while lowering cost.
+        <div class="feature-card feature-card--featured">
+          <div class="feature-icon icon-green">✅</div>
+          <h3 class="feature-title">Smart Approval Workflows</h3>
+          <p class="feature-text">
+            Multi-level, rule-based approvals for any business request —
+            configured for your team structure and policies.
           </p>
-          <cite>Jo, CIO, Malaysian brewery</cite>
-        </blockquote>
-
-        <blockquote class="quote" role="listitem">
-          <p>
-            Our initiative monitoring platform on SharePoint centralized project
-            tracking and reporting, giving us real-time visibility and stronger
-            execution discipline.
-          </p>
-          <cite>Sukma, PMO Lead, Malaysia technology hub</cite>
-        </blockquote>
-      </div>
-    </section>
-
-    <section id="contact" class="section section-contact reveal">
-      <div class="container contact-wrap">
-        <div>
-          <p class="eyebrow">Get started</p>
-          <h2>Book a Microsoft 365 workflow demo</h2>
-          <p>
-            Tell us your current process challenge and we will propose an
-            implementation path focused on speed, governance, and ROI.
-          </p>
-          <ul class="contact-list">
-            <li>Email: <a href="mailto:support@webparts360.com">support@webparts360.com</a></li>
-            <li>Company: CRN Solutions Sdn Bhd</li>
-            <li>Address: 26-1, Jalan 3/109C, Taman Abadi Indah, 58100 Kuala Lumpur</li>
+          <ul class="feature-list">
+            <li>Purchase and expense approvals</li>
+            <li>Leave and HR request management</li>
+            <li>Sales discount authorisations</li>
+            <li>Vendor onboarding approvals</li>
+            <li>Full audit trail and timestamps</li>
           </ul>
         </div>
 
-        <form class="contact-form" action="https://formspree.io/f/your-form-id" method="post">
-          <label>
-            Name
-            <input type="text" name="name" required>
-          </label>
-          <label>
-            Work Email
-            <input type="email" name="email" required>
-          </label>
-          <label>
-            Company
-            <input type="text" name="company">
-          </label>
-          <label>
-            Your challenge
-            <textarea name="message" rows="4" required></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit">Request Demo</button>
-          <p class="form-note">Replace the form endpoint with your own Formspree or equivalent service.</p>
-        </form>
-      </div>
-    </section>
-  </main>
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">📚</div>
+          <h3 class="feature-title">Company Knowledge Base</h3>
+          <p class="feature-text">
+            A structured, searchable SharePoint knowledge hub accessible
+            directly from Teams — always the latest version.
+          </p>
+          <ul class="feature-list">
+            <li>SOPs and process guides</li>
+            <li>Policies and HR documents</li>
+            <li>Product and price lists</li>
+            <li>Onboarding packs for new staff</li>
+            <li>Role-based access control</li>
+          </ul>
+        </div>
 
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>© 2026 CRN Solutions. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#top">Home</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#contact">Contact</a>
+        <div class="feature-card">
+          <div class="feature-icon icon-amber">🔗</div>
+          <h3 class="feature-title">ERP & System Integration</h3>
+          <p class="feature-text">
+            Surface your accounting or ERP data directly in Teams —
+            so your team acts without switching systems.
+          </p>
+          <ul class="feature-list">
+            <li>Xero, QuickBooks, Sage connect</li>
+            <li>SAP Business One integration</li>
+            <li>Microsoft Dynamics 365 sync</li>
+            <li>Approved transactions write-back</li>
+            <li>Real-time data visibility</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">📊</div>
+          <h3 class="feature-title">Operations Dashboard</h3>
+          <p class="feature-text">
+            A live, role-based dashboard in Teams showing the numbers and
+            statuses your team needs to stay aligned and take action.
+          </p>
+          <ul class="feature-list">
+            <li>Pending approvals at a glance</li>
+            <li>Team KPIs and targets</li>
+            <li>Outstanding tasks and deadlines</li>
+            <li>Stock and inventory alerts</li>
+            <li>Configurable per role or department</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-green">📋</div>
+          <h3 class="feature-title">Digital Forms & Data Capture</h3>
+          <p class="feature-text">
+            Replace paper forms and email templates with structured
+            digital forms that collect, validate, and route data automatically.
+          </p>
+          <ul class="feature-list">
+            <li>Custom form builder</li>
+            <li>Conditional logic and validation</li>
+            <li>Auto-routing to approvers</li>
+            <li>Data stored in SharePoint</li>
+            <li>Mobile-friendly on Teams app</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon icon-amber">🔔</div>
+          <h3 class="feature-title">Smart Notifications & Alerts</h3>
+          <p class="feature-text">
+            Automated, contextual notifications that keep the right
+            people informed — without the noise of broadcast messages.
+          </p>
+          <ul class="feature-list">
+            <li>Approval requests to approvers</li>
+            <li>Status updates to requestors</li>
+            <li>SLA escalation reminders</li>
+            <li>System event alerts</li>
+            <li>Delivered via Teams chat or channel</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       INTEGRATIONS
+  ============================================= -->
+  <section class="integrations">
+    <div class="container">
+      <div class="integrations__label">Connects with the tools you already use</div>
+      <div class="integrations__logos">
+        <div class="integration-pill"><span>📗</span> Microsoft 365</div>
+        <div class="integration-pill"><span>💬</span> Microsoft Teams</div>
+        <div class="integration-pill"><span>📁</span> SharePoint</div>
+        <div class="integration-pill"><span>🟢</span> Xero</div>
+        <div class="integration-pill"><span>💙</span> QuickBooks</div>
+        <div class="integration-pill"><span>🔶</span> Sage</div>
+        <div class="integration-pill"><span>🔷</span> SAP Business One</div>
+        <div class="integration-pill"><span>🟣</span> MS Dynamics 365</div>
+        <div class="integration-pill"><span>🟠</span> Odoo</div>
+        <div class="integration-pill"><span>🔌</span> REST API / Custom ERP</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       HOW IT WORKS
+  ============================================= -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Our Process</div>
+        <h2 class="section-title">From Discovery to Live in 4 Steps</h2>
+        <p class="section-subtitle">
+          We've done this enough times to make it fast, predictable, and
+          low-friction for your team. No lengthy IT projects.
+        </p>
+      </div>
+
+      <div class="how__steps">
+        <div class="how-step">
+          <div class="how-step__number num-1">1</div>
+          <h4 class="how-step__title">Free Discovery Call</h4>
+          <p class="how-step__text">
+            30 minutes. You tell us how your business operates today —
+            the workflows, the tools, the pain points. We listen and
+            show you what SmartBPM can solve.
+          </p>
+        </div>
+        <div class="how-step">
+          <div class="how-step__number num-2">2</div>
+          <h4 class="how-step__title">Scoping & Proposal</h4>
+          <p class="how-step__text">
+            We map your workflows, confirm your systems and integrations,
+            and give you a clear scope, timeline, and fixed price.
+            No surprises.
+          </p>
+        </div>
+        <div class="how-step">
+          <div class="how-step__number num-3">3</div>
+          <h4 class="how-step__title">Configure & Deploy</h4>
+          <p class="how-step__text">
+            We configure SmartBPM for your business, connect your ERP,
+            and deploy it into your Microsoft Teams environment.
+            You review and approve every step.
+          </p>
+        </div>
+        <div class="how-step">
+          <div class="how-step__number num-4">4</div>
+          <h4 class="how-step__title">Train & Hand Over</h4>
+          <p class="how-step__text">
+            We train your team, hand over documentation, and make sure
+            your staff are confident and productive from Day 1.
+            You own everything.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       STATS
+  ============================================= -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-accent">2–4</span></div>
+          <div class="stat-label">Weeks to go live</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-accent">0</span></div>
+          <div class="stat-label">New software licences required</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-accent">10+</span></div>
+          <div class="stat-label">ERP & accounting systems supported</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-accent">100%</span></div>
+          <div class="stat-label">Flexible & extensible</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       TESTIMONIALS
+  ============================================= -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Product Vision</div>
+        <h2 class="section-title">How does it work?</h2>
+        <!-- Responsive YouTube Embed Wrapper -->
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/KJ3G-j9EPf8?si=rPTkujjnafN3ZpPi"
+            title="WebParts360 SmartBPM Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CTA SECTION
+  ============================================= -->
+  <section class="cta" id="connect">
+    <div class="container">
+      <div class="cta__card">
+        <div class="cta__inner">
+
+          <div class="badge">Let's Talk</div>
+
+          <h2 class="cta__title">
+            Is SmartBPM the Right Fit<br />
+            <span style="color:var(--green)">for Your Business?</span>
+          </h2>
+
+          <p class="cta__subtitle">
+            Book a free 30-minute discovery call with our team.
+            We'll look at your current workflows, understand your
+            systems, and tell you honestly whether SmartBPM can
+            accelerate your digital transformation — and what it
+            would take to get you live.
+          </p>
+
+          <div class="cta__actions">
+            <a href="mailto:support@webparts360.com?subject=SmartBPM Discovery Call Request"
+               class="btn btn-primary btn-lg">
+              📅 Book My Free Discovery Call
+            </a>
+            <a href="mailto:support@webparts360.com?subject=SmartBPM Enquiry"
+               class="btn btn-white btn-lg">
+              ✉️ Send Us a Message
+            </a>
+          </div>
+
+          <div class="cta__reassurance">
+            <div class="reassurance-item">No obligation or sales pressure</div>
+            <div class="reassurance-item">30 minutes, that's all we ask</div>
+            <div class="reassurance-item">Get a clear answer, not a vague proposal</div>
+            <div class="reassurance-item">We'll tell you honestly if it's not a fit</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+
+        <div class="footer__brand">
+          <div class="navbar__logo">
+            <img src="w360-white.svg" alt="WebParts360" height="80" style="display:block;">
+          </div>
+          <div class="footer__tagline">
+            Building enterprise-grade systems on Microsoft 365 since 2016.
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <a href="#features">Features</a>
+          <a href="#how">How It Works</a>
+          <a href="#connect">Contact Us</a>
+          <a href="mailto:support@webparts360.com">support@webparts360.com</a>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__copy">
+          © 2026 Webparts360. All rights reserved.
+          SmartBPM is a product of Webparts360.
+        </div>
+        <div class="footer__ms-badge">
+          Microsoft 365 ISV Partner
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
