@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Work Training | CRN Solutions</title>
+  <meta name="description" content="HRDF-claimable, hands-on Modern Work training for IT and digital leaders on SharePoint, Power BI, and applied AI workloads." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet" />
+  <style>
+    /* Reuse core styles from main site (abbreviated to essentials) */
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #fbfbf9;
+      --color-surface-2: #f1efe9;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-soft: #d9ecea;
+      --color-accent: #1e3a5f;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.875rem;
+      --radius-xl: 1.25rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(40,37,29,0.06);
+      --shadow-md: 0 8px 24px rgba(40,37,29,0.08);
+      --content-default: 1120px;
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --font-body: "General Sans","Inter",sans-serif;
+      --font-display: "Cabinet Grotesk","Inter",sans-serif;
+    }
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #22211f;
+      --color-border: #393836;
+      --color-divider: #262523;
+      --color-text: #cdccca;
+      --color-text-muted: #9b9892;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6eb0ba;
+      --color-primary-soft: #223335;
+      --color-accent: #88a8d8;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.28);
+    }
+    *,*::before,*::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container {
+      width: min(calc(100% - 2rem), var(--content-default));
+      margin-inline: auto;
+    }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      border-bottom: 1px solid rgba(127,127,127,0.14);
+    }
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: var(--space-4);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-weight: 700;
+    }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-text strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+    .brand-text span {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+    .site-nav {
+      display: flex;
+      gap: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .site-nav a:hover {
+      color: var(--color-text);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      min-height: 44px;
+      padding: 0 var(--space-5);
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary {
+      background: var(--color-surface);
+      border-color: rgba(127,127,127,0.18);
+    }
+    .kicker {
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+    }
+    .hero {
+      padding-block: var(--space-12);
+    }
+    .hero-grid {
+      display: grid;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    .hero h1 {
+      margin: var(--space-3) 0 var(--space-4);
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      max-width: 18ch;
+    }
+    .hero p {
+      max-width: 60ch;
+      color: var(--color-text-muted);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+    .section {
+      padding-block: clamp(var(--space-10), 7vw, var(--space-16));
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-6);
+      align-items: flex-end;
+      margin-bottom: var(--space-8);
+    }
+    .section-head h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      line-height: 1.05;
+    }
+    .section-head p {
+      margin: 0;
+      max-width: 54ch;
+      color: var(--color-text-muted);
+    }
+    .grid-3 {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(127,127,127,0.14);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+    .card h3 {
+      margin: 0 0 var(--space-3);
+      font-size: var(--text-lg);
+    }
+    .card p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+    .meta-pill {
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: var(--color-surface-2);
+      border: 1px solid rgba(127,127,127,0.16);
+    }
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: var(--space-8);
+      align-items: flex-start;
+    }
+    .list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--color-text-muted);
+    }
+    .list li {
+      margin-bottom: 0.25rem;
+    }
+    .note {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .back-link svg {
+      width: 16px;
+      height: 16px;
+    }
+    .site-footer {
+      padding: var(--space-10) 0 var(--space-12);
+      border-top: 1px solid var(--color-divider);
+      margin-top: var(--space-8);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+      gap: var(--space-8);
+      align-items: flex-start;
+    }
+    .footer-links {
+      display: grid;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    @media (min-width: 960px) {
+      .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+    }
+    @media (max-width: 959px) {
+      .site-nav { display: none; }
+      .grid-3, .two-column, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 8.5 12 4l7 4.5v7L12 20l-7-4.5z"></path>
+            <path d="M9 10.5h6"></path>
+            <path d="M9 13.5h4"></path>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>CRN Solutions</strong>
+          <span>Microsoft 365 workflow specialists</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#training">Training</a>
+        <a href="index.html#webparts360">Webparts360</a>
+        <a href="index.html#smartbpm">SmartBPM</a>
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="index.html#contact">Book a discovery call</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <a href="index.html#training" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+            Back to homepage
+          </a>
+          <div class="kicker">Modern Work training</div>
+          <h1>HRDF-claimable masterclasses for IT-led modern workplaces</h1>
+          <p>
+            Equip your IT, business, and analytics teams to get real value from SharePoint, Power BI, and AI in Microsoft 365.
+            Our HRDF-claimable public and in-house courses are built by practitioners who design and run critical workflow
+            solutions on these platforms every day.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:training@crnsolutions.com?subject=Training enquiry">
+              Enquire about a training date
+            </a>
+            <a class="btn btn-secondary" href="index.html#contact">
+              Talk to us about your team
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <h3>Who this is for</h3>
+            <p>
+              These programmes are designed for IT professionals, modern workplace leads, power users, and business managers
+              who are responsible for Microsoft 365 adoption and need practical skills, not just theory.
+            </p>
+            <ul class="list" style="margin-top: var(--space-4);">
+              <li>IT and digital workplace teams rolling out or maturing Microsoft 365.</li>
+              <li>Business owners who sponsor intranets, collaboration sites, and dashboards.</li>
+              <li>Power users who will build lists, pages, flows, and reports for their departments.</li>
+            </ul>
+            <p class="note">
+              All courses are HRDF-claimable and can be delivered as public intakes or in-house sessions for your organisation
+              (subject to HRD Corp guidelines).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course cards -->
+    <section class="section" id="courses">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Course catalogue</div>
+            <h2>Three focused programmes for real-world Modern Work scenarios</h2>
+          </div>
+          <p>
+            Each course is designed as a short, intensive masterclass with hands-on labs and examples drawn from
+            actual SharePoint, Power BI, and AI implementations. Participants leave with skills they can apply
+            immediately to your environment.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <!-- SharePoint Masterclass -->
+          <article class="card">
+            <h3>SharePoint Masterclass</h3>
+            <p>
+              A 2-day, hands-on course where participants build a working intranet on Microsoft 365 – combining SharePoint,
+              Teams, and Planner for collaboration, document management, lists, simple automation, and governance.
+            </p>
+            <div class="meta-row">
+              <span class="meta-pill">Duration: 2 days</span>
+              <span class="meta-pill">Level: Intermediate</span>
+              <span class="meta-pill">Format: Public or in-house</span>
+            </div>
+          </article>
+
+          <!-- Essential Power BI -->
+          <article class="card">
+            <h3>Essential Power BI</h3>
+            <p>
+              A dashboard-in-a-day style introduction to Power BI. Participants learn how to connect and shape data,
+              build interactive reports with drill-through, and publish dashboards that business stakeholders can
+              actually use to make decisions.
+            </p>
+            <div class="meta-row">
+              <span class="meta-pill">Duration: 1 day</span>
+              <span class="meta-pill">Level: Introductory</span>
+              <span class="meta-pill">Format: Public or in-house</span>
+            </div>
+          </article>
+
+          <!-- Pragmatic AI series -->
+          <article class="card">
+            <h3>Pragmatic AI series</h3>
+            <p>
+              A 2-day executive and practitioner deep dive into applying AI tools such as ChatGPT, Claude, Gemini,
+              and Perplexity to specific workloads – including HR analytics, recruitment, L&amp;D, and HR operations –
+              with content tailored to your context.
+            </p>
+            <div class="meta-row">
+              <span class="meta-pill">Duration: 2 days</span>
+              <span class="meta-pill">Level: Executive &amp; practitioner</span>
+              <span class="meta-pill">Format: Customisable in-house</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deeper details: objectives and sample agendas -->
+    <section class="section">
+      <div class="container two-column">
+        <div>
+          <div class="kicker">Learning outcomes</div>
+          <h2>Built for teams who need to deliver, not just attend training</h2>
+          <p>
+            These programmes are designed to align with the way you already use Microsoft 365 – intranets, workflows,
+            dashboards, and people operations – so participants can apply what they learn directly to existing projects.
+          </p>
+          <ul class="list" style="margin-top: var(--space-4);">
+            <li>Design and structure SharePoint sites that support real collaboration and document use.</li>
+            <li>Use Power BI to turn operational data into dashboards and drill-through reports.</li>
+            <li>Identify where AI tools can safely and effectively augment HR and business processes.</li>
+            <li>Apply governance and best practices that keep your Microsoft 365 environment manageable.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card">
+            <h3>Course agenda highlights</h3>
+            <ul class="list">
+              <li><strong>Day 1 – SharePoint Masterclass:</strong> Site architecture, pages, lists, permissions, Teams integration.</li>
+              <li><strong>Day 2 – SharePoint Masterclass:</strong> Document management, Power Automate approvals, search &amp; governance.</li>
+              <li><strong>Power BI day:</strong> Connecting data, modeling basics, building reports, sharing dashboards.</li>
+              <li><strong>AI series:</strong> Modern Work AI landscape, use-case design, hands-on labs, policy &amp; risk discussion.</li>
+            </ul>
+            <p class="note">
+              Detailed agendas can be adjusted to match your current Microsoft 365 maturity and project priorities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="section">
+      <div class="container">
+        <div class="card" style="border-radius: 28px; box-shadow: var(--shadow-md); background: linear-gradient(135deg, rgba(1,105,111,0.12), rgba(30,58,95,0.08));">
+          <div class="kicker">Next steps</div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 3.2vw, 2.8rem); line-height: 1.05; margin-top: 0;">
+            Plan a Modern Work training track for your organisation
+          </h2>
+          <p style="max-width: 60ch; color: var(--color-text-muted);">
+            Share your current Microsoft 365 landscape, team profiles, and the outcomes you need, and we will recommend
+            a combination of SharePoint, Power BI, and AI sessions – including HRDF claim guidance for Malaysian employers.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:training@webparts360.com?subject=Modern Work training enquiry">
+              Email training@webparts360.com
+            </a>
+            <a class="btn btn-secondary" href="index.html#contact">
+              Or book a discovery call instead
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: var(--space-4);">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 8.5 12 4l7 4.5v7L12 20l-7-4.5z"></path>
+              <path d="M9 10.5h6"></path>
+              <path d="M9 13.5h4"></path>
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>CRN Solutions</strong>
+            <span>Microsoft 365 workflow specialists</span>
+          </span>
+        </div>
+        <p style="max-width: 56ch; color: var(--color-text-muted);">
+          CRN Solutions builds business-critical workflow, collaboration, and AI-enabled applications inside SharePoint,
+          Teams, and Microsoft 365 – and trains your teams to use these tools effectively.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#training">Training</a>
+        <a href="index.html#webparts360">Webparts360</a>
+        <a href="index.html#smartbpm">SmartBPM</a>
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="index.html#contact">Book a discovery call</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
