@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SharePoint Masterclass | Build, Manage and Govern Your Microsoft 365 Digital Workspace</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --surface:#ffffff;
+      --text:#1f2937;
+      --muted:#667085;
+      --line:#e5e7eb;
+      --brand:#0f6cbd;
+      --brand-dark:#0b4f8a;
+      --accent:#dbeafe;
+      --shadow:0 10px 30px rgba(15,23,42,0.08);
+      --radius:18px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .container{
+      width:min(var(--max),calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar{
+      background:#0b1220;
+      color:#d1d5db;
+      font-size:14px;
+    }
+    .topbar .container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 0;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .badge-row{display:flex;gap:10px;flex-wrap:wrap}
+    .badge{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:13px;
+      opacity:0;
+      animation:badgeIn .5s ease forwards;
+    }
+    .badge:nth-child(1){animation-delay:.8s}
+    .badge:nth-child(2){animation-delay:1.0s}
+    .badge:nth-child(3){animation-delay:1.2s}
+
+    @keyframes badgeIn{
+      from{opacity:0;transform:translateY(-6px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* ── HERO ── */
+    header.hero{
+      background:
+        radial-gradient(circle at top right,rgba(15,108,189,0.20),transparent 30%),
+        linear-gradient(135deg,#0b1220 0%,#0f172a 45%,#0f6cbd 140%);
+      color:white;
+      padding:72px 0 52px;
+      overflow:hidden;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.25fr 0.75fr;
+      gap:32px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#bfdbfe;
+      margin-bottom:12px;
+      opacity:0;
+      animation:heroFadeUp .6s ease .15s forwards;
+    }
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(34px,6vw,56px);
+      line-height:1.08;
+      letter-spacing:-.02em;
+      opacity:0;
+      animation:heroFadeUp .7s ease .35s forwards;
+    }
+    .hero p{
+      font-size:18px;
+      color:#dbe7f5;
+      max-width:760px;
+      margin:0 0 22px;
+      opacity:0;
+      animation:heroFadeUp .7s ease .55s forwards;
+    }
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:22px;
+      opacity:0;
+      animation:heroFadeUp .7s ease .75s forwards;
+    }
+    .hero-card{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius:20px;
+      padding:22px;
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+      opacity:0;
+      animation:heroSlideIn .8s cubic-bezier(.22,1,.36,1) .5s forwards;
+    }
+    .hero-card h3{margin-top:0;margin-bottom:12px;font-size:18px}
+    .hero-card ul{margin:0;padding-left:18px;color:#e5eef9}
+    .hero-card li{margin-bottom:8px}
+
+    @keyframes heroFadeUp{
+      from{opacity:0;transform:translateY(22px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @keyframes heroSlideIn{
+      from{opacity:0;transform:translateX(40px)}
+      to{opacity:1;transform:translateX(0)}
+    }
+
+    /* ── BUTTONS ── */
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid transparent;
+      transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, background .2s ease;
+      cursor:pointer;
+    }
+    .btn-primary{background:white;color:#0b1220}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.18);text-decoration:none}
+    .btn-secondary{background:transparent;color:white;border-color:rgba(255,255,255,0.28)}
+    .btn-secondary:hover{background:rgba(255,255,255,0.10);transform:translateY(-2px);text-decoration:none}
+    .btn-outline{
+      background:transparent;
+      color:var(--brand);
+      border:2px solid var(--brand);
+      font-size:15px;
+      padding:11px 20px;
+    }
+    .btn-outline:hover{
+      background:var(--accent);
+      transform:translateY(-3px);
+      box-shadow:0 6px 16px rgba(15,108,189,0.18);
+      text-decoration:none;
+    }
+
+    /* ── SCROLL ANIMATION BASE ── */
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .65s ease, transform .65s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .reveal-left{
+      opacity:0;
+      transform:translateX(-28px);
+      transition:opacity .65s ease, transform .65s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-left.visible{opacity:1;transform:translateX(0)}
+    .reveal-right{
+      opacity:0;
+      transform:translateX(28px);
+      transition:opacity .65s ease, transform .65s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-right.visible{opacity:1;transform:translateX(0)}
+    .reveal-scale{
+      opacity:0;
+      transform:scale(0.95);
+      transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-scale.visible{opacity:1;transform:scale(1)}
+
+    /* stagger children */
+    .stagger-children > *{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1);
+    }
+    .stagger-children.visible > *:nth-child(1){opacity:1;transform:translateY(0);transition-delay:.05s}
+    .stagger-children.visible > *:nth-child(2){opacity:1;transform:translateY(0);transition-delay:.17s}
+    .stagger-children.visible > *:nth-child(3){opacity:1;transform:translateY(0);transition-delay:.29s}
+    .stagger-children.visible > *:nth-child(4){opacity:1;transform:translateY(0);transition-delay:.41s}
+    .stagger-children.visible > *:nth-child(5){opacity:1;transform:translateY(0);transition-delay:.53s}
+    .stagger-children.visible > *:nth-child(6){opacity:1;transform:translateY(0);transition-delay:.65s}
+
+    /* ── SECTIONS ── */
+    section{padding:64px 0}
+
+    .section-head{max-width:860px;margin-bottom:28px}
+    .section-head h2{
+      margin:0 0 10px;
+      font-size:clamp(28px,4vw,38px);
+      line-height:1.15;
+      letter-spacing:-.02em;
+    }
+    .section-head p{margin:0;color:var(--muted);font-size:17px}
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-placeholder{
+      width:100%;
+      min-height:320px;
+      background:linear-gradient(135deg,#e8f0fe 0%,#dbeafe 50%,#ede9fe 100%);
+      border:2px dashed #93c5fd;
+      border-radius:var(--radius);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      margin-bottom:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .img-placeholder::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:repeating-linear-gradient(
+        45deg,transparent,transparent 18px,
+        rgba(147,197,253,0.15) 18px,rgba(147,197,253,0.15) 19px
+      );
+    }
+    /* shimmer sweep */
+    .img-placeholder::after{
+      content:'';
+      position:absolute;
+      top:0;left:-100%;
+      width:60%;height:100%;
+      background:linear-gradient(
+        90deg,transparent 0%,rgba(255,255,255,0.45) 50%,transparent 100%
+      );
+      animation:shimmer 2.8s ease-in-out infinite;
+    }
+    @keyframes shimmer{
+      0%{left:-60%}
+      100%{left:160%}
+    }
+
+    .img-placeholder-icon{
+      width:64px;height:64px;
+      background:rgba(15,108,189,0.12);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;z-index:1;
+      animation:iconPulse 3s ease-in-out infinite;
+    }
+    @keyframes iconPulse{
+      0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(15,108,189,0.2)}
+      50%{transform:scale(1.07);box-shadow:0 0 0 10px rgba(15,108,189,0)}
+    }
+    .img-placeholder-icon svg{
+      width:32px;height:32px;
+      stroke:#0f6cbd;fill:none;
+      stroke-width:1.8;
+      stroke-linecap:round;stroke-linejoin:round;
+    }
+    .img-placeholder-text{text-align:center;position:relative;z-index:1}
+    .img-placeholder-text strong{display:block;font-size:17px;color:#0b4f8a;margin-bottom:6px}
+    .img-placeholder-text span{font-size:14px;color:#5b89c0}
+
+    /* ── CARDS ── */
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,23,42,0.13)}
+    .card h3{margin:0 0 10px;font-size:20px}
+    .card p{margin:0;color:var(--muted)}
+
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+    .list-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+      transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+    }
+    .list-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,23,42,0.11)}
+    .list-card h3{margin-top:0;margin-bottom:14px;font-size:22px}
+    .list-card ul{margin:0;padding-left:20px}
+    .list-card li{margin-bottom:10px}
+
+    /* ── TABLE ── */
+    .details-table{
+      width:100%;
+      border-collapse:collapse;
+      background:var(--surface);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+    }
+    .details-table th,.details-table td{
+      text-align:left;
+      padding:16px 18px;
+      border-bottom:1px solid var(--line);
+      vertical-align:top;
+    }
+    .details-table th{width:260px;background:#f8fafc;font-size:15px}
+    .details-table tr{
+      opacity:0;
+      transform:translateX(-16px);
+      transition:opacity .4s ease, transform .4s ease, background .2s ease;
+    }
+    .details-table tr.visible{opacity:1;transform:translateX(0)}
+    .details-table tr:hover{background:#f0f7ff}
+    .details-table tr:last-child th,
+    .details-table tr:last-child td{border-bottom:none}
+
+    /* ── FACILITATOR ── */
+    .facilitator{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:24px;
+      align-items:start;
+    }
+    .quote{
+      background:var(--accent);
+      border:1px solid #bfdbfe;
+      border-radius:18px;
+      padding:22px;
+      font-size:18px;
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+    .quote:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,108,189,0.12)}
+    .quote strong{color:#0b4f8a}
+
+    /* ── CTA ── */
+    .cta-panel{
+      background:linear-gradient(135deg,#0f6cbd 0%,#0b4f8a 100%);
+      color:white;
+      border-radius:24px;
+      padding:32px;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:24px;
+      align-items:center;
+    }
+    .cta-panel h2{margin:0 0 10px;font-size:34px;line-height:1.1}
+    .cta-panel p{margin:0;color:#e8f1fb;font-size:17px}
+    .cta-box{
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.18);
+      border-radius:18px;
+      padding:22px;
+    }
+    .cta-box ul{margin:0 0 16px;padding-left:20px}
+
+    /* ── FOOTER ── */
+    footer{padding:28px 0 40px;color:var(--muted);font-size:14px}
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:980px){
+      .hero-grid,.split,.facilitator,.cta-panel{grid-template-columns:1fr}
+      .card-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:680px){
+      section{padding:48px 0}
+      .card-grid{grid-template-columns:1fr}
+      .details-table th,.details-table td{display:block;width:100%}
+      .details-table th{border-bottom:none;padding-bottom:8px}
+      .details-table td{padding-top:0}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container">
+      <div>3-day instructor-led Microsoft 365 SharePoint Masterclass</div>
+      <div class="badge-row">
+        <span class="badge">Hands-on labs</span>
+        <span class="badge">In-person or virtual</span>
+        <span class="badge">10-20 participants</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Microsoft 365 Collaboration Masterclass</div>
+        <h1>Build, Manage and Govern Your SharePoint Digital Workplace</h1>
+        <p>
+          Transform scattered files, inconsistent processes, and underused Microsoft 365 tools into a structured,
+          trusted, and usable digital workspace led by the people who actually do the work.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#register">Enquire About This Program</a>
+          <a class="btn btn-secondary" href="#curriculum">View What Will Be Covered</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h3>Participants will learn how to:</h3>
+        <ul>
+          <li>Structure SharePoint sites, libraries, lists, and permissions.</li>
+          <li>Build landing pages, knowledge hubs, and departmental self-service resources.</li>
+          <li>Use Teams, Planner, Lists, Outlook, and Power Automate as one connected workspace.</li>
+          <li>Create sustainable digital work environments that teams actually use.</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <!-- WHY THIS COURSE STANDS APART -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Why this course stands apart</h2>
+        <p>
+          Many SharePoint courses teach features. This one starts with the real operational problem:
+          a digital workplace fails when content ownership sits with IT instead of the business team it serves.
+        </p>
+      </div>
+
+      <div class="img-placeholder reveal">
+        <div class="img-placeholder-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+            <circle cx="16" cy="6" r="1" fill="#0f6cbd"/>
+            <path d="M7 14l3 3 4-4 3 3"/>
+          </svg>
+        </div>
+        <div class="img-placeholder-text">
+          <strong>Illustration: The SharePoint Implementation Challenge</strong>
+          <span>
+            Replace with an image showing disorganised files, siloed teams, and fragmented tools<br>
+            contrasted with a structured, connected Microsoft 365 digital workspace.
+          </span>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="list-card reveal-left">
+          <h3>The hidden need</h3>
+          <ul>
+            <li>Does your SharePoint site look more like a dumping ground than a well-structured repository?</li>
+            <li>Are your staff still emailing files back and forth because no one trusts the shared workspace?</li>
+            <li>Are approvals, SOPs, updates, and service information scattered across folders, chats, and inboxes?</li>
+            <li>Do remote and hybrid staff miss context because important knowledge only travels informally?</li>
+            <li>Has intranet ownership been handed to IT, even though the actual content belongs to the department?</li>
+          </ul>
+        </div>
+        <div class="list-card reveal-right">
+          <h3>The distinct advantage</h3>
+          <ul>
+            <li>This program teaches teams to map real-world work into a digital twin that supports daily operations.</li>
+            <li>Managers and team members learn what content should exist, who it serves, and how it stays current.</li>
+            <li>Participants build a departmental service and content map, not just a set of disconnected pages.</li>
+            <li>The course combines platform configuration with practical workplace design, governance, and adoption.</li>
+            <li>You gain the benefit of decades of enterprise implementation experience applied to real business use.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO SHOULD ATTEND -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Who should attend</h2>
+        <p>
+          This program is designed for the people who shape how information flows, how teams collaborate,
+          and how work gets done across departments.
+        </p>
+      </div>
+      <div class="card-grid stagger-children">
+        <div class="card">
+          <h3>IT Administrators</h3>
+          <p>Support governance, permissions, and platform structure while enabling business teams to own relevant content.</p>
+        </div>
+        <div class="card">
+          <h3>Managers and Leads</h3>
+          <p>Design departmental spaces that help staff find information, follow processes, and work with less friction.</p>
+        </div>
+        <div class="card">
+          <h3>Power Users</h3>
+          <p>Build practical pages, lists, workflows, and task systems that strengthen day-to-day operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES AND CURRICULUM -->
+  <section id="outcomes">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>What participants will achieve</h2>
+        <p>
+          The learning outcomes focus on building an environment that is usable, maintainable, and aligned to how teams actually work.
+        </p>
+      </div>
+      <div class="split">
+        <div class="list-card reveal-left">
+          <h3>Key learning outcomes</h3>
+          <ul>
+            <li>Secure digital workspaces through role-based permissions and access governance.</li>
+            <li>Structure information for findability and long-term scalability.</li>
+            <li>Build navigation, landing pages, and knowledge hubs that people can actually use.</li>
+            <li>Publish targeted updates, FAQs, and departmental resources for self-service access.</li>
+            <li>Use Lists and Planner for tasks, workloads, and recurring work management.</li>
+            <li>Automate workflows, approvals, and notifications with Power Automate.</li>
+          </ul>
+        </div>
+        <div class="list-card reveal-right" id="curriculum">
+          <h3>What will be covered</h3>
+          <ul>
+            <li>SharePoint site architecture, permissions, and access control.</li>
+            <li>Document libraries, metadata, and SharePoint Lists.</li>
+            <li>Navigation design, home pages, and web parts.</li>
+            <li>Knowledge hubs, FAQs, news, and announcements.</li>
+            <li>Microsoft Teams structure, Planner, and process templates.</li>
+            <li>Power Automate flows, Outlook integration, and compliance monitoring.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM DETAILS -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Program details</h2>
+        <p>
+          The delivery format is designed for practical application, live facilitation, and team discussion around real workplace use cases.
+        </p>
+      </div>
+      <table class="details-table">
+        <tr><th>Duration</th><td>3 days</td></tr>
+        <tr><th>Format</th><td>Instructor-led with hands-on labs</td></tr>
+        <tr><th>Delivery mode</th><td>In-person or virtual</td></tr>
+        <tr><th>Group size</th><td>10-20 participants</td></tr>
+        <tr><th>Prerequisite</th><td>Basic familiarity with Microsoft 365</td></tr>
+        <tr><th>Participant requirements</th><td>Laptop with a Microsoft 365 Work or School account</td></tr>
+        <tr><th>Language</th><td>English, with Bahasa Malaysia available on request</td></tr>
+        <tr><th>Certification</th><td>SynergySkills Certificate of Completion</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- FACILITATOR -->
+  <section>
+    <div class="container facilitator">
+      <div>
+        <div class="section-head reveal">
+          <h2>Your facilitator</h2>
+          <p>
+            Rico Ho brings deep implementation credibility across SharePoint, Microsoft Teams, and the Power Platform,
+            with a strong track record in enterprise deployments and community leadership.
+          </p>
+        </div>
+        <div class="list-card reveal">
+          <p>
+            Rico Ho is the founder of CRN Solutions Sdn Bhd, a Microsoft ISV Partner, and an HRDF-certified trainer
+            specialising in SharePoint, Teams, and Power Platform. He has more than 35 years of experience in software
+            development and enterprise technology, and has led Microsoft 365 deployments for organisations including
+            Coca-Cola, BMW, Daikin, Heineken, Sunway, and Sime Darby.
+          </p>
+          <p>
+            He developed Webparts360, the first Malaysian Microsoft ISV product showcased at Microsoft US conferences,
+            and winner of the APICTA award for Best Applications and Infrastructure Tools. For eight consecutive years,
+            he has convened Kuala Lumpur's largest independent Microsoft 365 and Power Platform community.
+          </p>
+        </div>
+      </div>
+      <div class="quote reveal-right">
+        <strong>Rico bridges the gap between technical configuration and real-world workplace impact</strong> — helping
+        participants build SharePoint environments that people actually use, trust, and rely on.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="register">
+    <div class="container">
+      <div class="cta-panel reveal-scale">
+        <div>
+          <h2>Build a digital workplace your team will actually use</h2>
+          <p>
+            Move beyond disconnected tools and ad hoc content. Equip your managers, team leads, and power users
+            to create a SharePoint environment that reflects real work, supports self-service, and scales with confidence.
+          </p>
+        </div>
+        <div class="cta-box">
+          <ul>
+            <li>Available for corporate groups and private cohorts.</li>
+            <li>Suitable for departmental transformation, intranet refresh, and Microsoft 365 adoption initiatives.</li>
+            <li>Customised delivery can align with your use cases and business processes.</li>
+          </ul>
+          <a class="btn btn-primary" href="mailto:training@example.com?subject=SharePoint%20Masterclass%20Enquiry">Request Program Information</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner reveal">
+      <span>SharePoint Masterclass Program &mdash; SynergySkills by CRN Solutions Sdn Bhd</span>
+      <button class="btn btn-outline" onclick="history.back()">Back to previous page</button>
+    </div>
+  </footer>
+
+  <!-- SCROLL ANIMATION SCRIPT -->
+  <script>
+    // General reveal observer
+    const revealEls = document.querySelectorAll(
+      '.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children'
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // Table row stagger
+    const tableRows = document.querySelectorAll('.details-table tr');
+    const tableObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const rows = entry.target.querySelectorAll('tr');
+          rows.forEach((row, i) => {
+            setTimeout(() => row.classList.add('visible'), i * 90);
+          });
+          tableObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const table = document.querySelector('.details-table');
+    if (table) tableObserver.observe(table);
+  </script>
+
+</body>
+</html>
