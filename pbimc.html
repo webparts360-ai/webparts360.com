@@ -172,9 +172,11 @@
     .hero {
       padding-top: var(--space-12);
     }
-    .hero-grid {
-      display: grid; gap: var(--space-10); align-items: center;
+
+    @media (min-width: 980px) {
+  .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
     }
+
     .eyebrow {
       display: inline-flex; align-items: center; gap: var(--space-2);
       padding: 0.35rem 0.75rem; border-radius: var(--radius-full);
@@ -468,7 +470,7 @@
         </div>
         <div class="hero-visual">
           <div class="placeholder-image">
-<iframe title="Financial Reporting (MGB)" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=34bee6b2-b6e9-43ed-8ff7-0d9e682ed7f6&autoAuth=true&ctid=dbf82228-0591-41ea-9d02-a5d918156b85" frameborder="0" allowFullScreen="true"></iframe>
+<iframe title="Financial Reporting (MGB)" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNzJhNTMyZGQtMTI0YS00MGJjLTlkZmItOGMxZWZlMDdlMTBkIiwidCI6ImRiZjgyMjI4LTA1OTEtNDFlYS05ZDAyLWE1ZDkxODE1NmI4NSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
           </div>
         </div>
       </div>
