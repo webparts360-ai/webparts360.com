@@ -219,6 +219,7 @@
       border: 1px solid rgba(127,127,127,0.14);
       border-radius: 28px; padding: var(--space-5);
       box-shadow: var(--shadow-lg);
+      position: relative; 
     }
     .placeholder-image {
       border: 2px dashed rgba(127,127,127,0.28);
@@ -227,8 +228,25 @@
         linear-gradient(135deg, rgba(1,105,111,0.08), rgba(30,58,95,0.04)),
         repeating-linear-gradient(135deg, transparent, transparent 18px, rgba(127,127,127,0.05) 18px, rgba(127,127,127,0.05) 36px);
       display: grid; place-items: center;
-      padding: var(--space-8); text-align: center;
+      padding: 0;
+      min-height: 0; 
       color: var(--color-text-muted);
+    }
+
+    .hero-video-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;           /* 16:9 aspect ratio (height = 56.25% of width) */
+      border-radius: 22px;
+      overflow: hidden;              /* rounded corners clip the iframe */
+    }
+
+    .hero-video-wrap iframe {
+      position: absolute;
+      inset: 0;                      /* shorthand for top:0; right:0; bottom:0; left:0 */
+      width: 100%;
+      height: 100%;
+      border: none;
     }
     .placeholder-image strong {
       display: block; font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-2);
@@ -473,7 +491,9 @@
         </div>
         <div class="hero-visual">
           <div class="placeholder-image">
+            <div class="hero-video-wrap">
             <iframe title="Financial Reporting (MGB)" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiNzJhNTMyZGQtMTI0YS00MGJjLTlkZmItOGMxZWZlMDdlMTBkIiwidCI6ImRiZjgyMjI4LTA1OTEtNDFlYS05ZDAyLWE1ZDkxODE1NmI4NSIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
           </div>
         </div>
       </div>
