@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Power BI Dashboard in a Day | CRN Solutions</title>
+
+  <meta name="description" content="Learn to build and publish interactive Power BI dashboards in one day. Hands-on beginner course by CRN Solutions for analysts and business users." />
+
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet" />
+
+  <!-- Same stylesheet you provided -->
+  <style>
+    /* --- all your existing CSS from the stylesheet pasted here unchanged --- */
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+
+      --color-bg: #f7f6f2;
+      --color-surface: #fbfbf9;
+      --color-surface-2: #f1efe9;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-text-faint: #9d9a93;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-soft: #d9ecea;
+      --color-accent: #1e3a5f;
+      --color-success: #437a22;
+
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.875rem;
+      --radius-xl: 1.25rem;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 2px rgba(40, 37, 29, 0.06);
+      --shadow-md: 0 8px 24px rgba(40, 37, 29, 0.08);
+      --shadow-lg: 0 20px 48px rgba(40, 37, 29, 0.12);
+
+      --content-default: 1120px;
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font-body: 'General Sans', 'Inter', sans-serif;
+      --font-display: 'Cabinet Grotesk', 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #22211f;
+      --color-border: #393836;
+      --color-divider: #262523;
+      --color-text: #cdccca;
+      --color-text-muted: #9b9892;
+      --color-text-faint: #6e6b66;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6eb0ba;
+      --color-primary-soft: #223335;
+      --color-accent: #88a8d8;
+      --color-success: #84bf63;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.28);
+      --shadow-lg: 0 20px 48px rgba(0,0,0,0.42);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--content-default));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute; left: -999px; top: 0;
+      background: var(--color-primary); color: white;
+      padding: var(--space-3) var(--space-4); z-index: 20;
+    }
+    .skip-link:focus { left: var(--space-4); top: var(--space-4); }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      border-bottom: 1px solid rgba(127,127,127,0.14);
+    }
+
+    .header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-4); min-height: 78px;
+    }
+
+    .brand { display: flex; align-items: center; gap: var(--space-3); font-weight: 700; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      display: grid; place-items: center; color: white;
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .brand-text strong {
+      display: block; font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.02em;
+    }
+    .brand-text span { display: block; font-size: var(--text-xs); color: var(--color-text-muted); }
+
+    .nav-wrap { display: flex; align-items: center; gap: var(--space-4); }
+    .site-nav {
+      display: flex; align-items: center; gap: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .site-nav a:hover, .site-nav a:focus-visible { color: var(--color-text); }
+    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+    .theme-toggle, .menu-toggle {
+      min-width: 44px; min-height: 44px; border-radius: var(--radius-full);
+      border: 1px solid rgba(127,127,127,0.2); background: var(--color-surface);
+      color: var(--color-text); cursor: pointer;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .theme-toggle:hover, .menu-toggle:hover { transform: translateY(-1px); }
+    .menu-toggle { display: none; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+      min-height: 48px; padding: 0 var(--space-5);
+      border-radius: var(--radius-full); border: 1px solid transparent;
+      font-size: var(--text-sm); font-weight: 600;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--color-primary); color: white; }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary { background: var(--color-surface); border-color: rgba(127,127,127,0.18); }
+
+    main section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
+
+    .hero {
+      padding-top: var(--space-12);
+    }
+    .hero-grid {
+      display: grid; gap: var(--space-10); align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 0.35rem 0.75rem; border-radius: var(--radius-full);
+      background: var(--color-primary-soft); color: var(--color-primary);
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: var(--space-5) 0 var(--space-4);
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 5.2rem);
+      line-height: 0.98;
+      max-width: 18ch;
+    }
+    .hero p {
+      max-width: 62ch; color: var(--color-text-muted); margin: 0 0 var(--space-6);
+      font-size: var(--text-lg);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4); margin-top: var(--space-8);
+    }
+    .stat-card {
+      background: var(--color-surface); border: 1px solid rgba(127,127,127,0.14);
+      border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    .stat-card strong {
+      display: block; font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: var(--space-2); color: var(--color-primary);
+    }
+    .stat-card span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .hero-visual {
+      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
+      border: 1px solid rgba(127,127,127,0.14);
+      border-radius: 28px; padding: var(--space-5);
+      box-shadow: var(--shadow-lg);
+    }
+    .placeholder-image {
+      border: 2px dashed rgba(127,127,127,0.28);
+      border-radius: 22px; min-height: 420px;
+      background:
+        linear-gradient(135deg, rgba(1,105,111,0.08), rgba(30,58,95,0.04)),
+        repeating-linear-gradient(135deg, transparent, transparent 18px, rgba(127,127,127,0.05) 18px, rgba(127,127,127,0.05) 36px);
+      display: grid; place-items: center;
+      padding: var(--space-8); text-align: center;
+      color: var(--color-text-muted);
+    }
+    .placeholder-image strong {
+      display: block; font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-2);
+    }
+
+    .section-head { 
+      text-align: center;
+      margin-bottom: var(--space-10);
+      max-width: 700px;
+      margin-inline: auto;
+    }
+    .section-head h2 {
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); 
+      line-height: 1.1; margin: 0 0 var(--space-4);
+    }
+    .section-head p { color: var(--color-text-muted); margin: 0; font-size: var(--text-lg); }
+
+    .grid-3 { display: grid; gap: var(--space-5); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { display: grid; gap: var(--space-5); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--color-surface); border: 1px solid rgba(127,127,127,0.14);
+      border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-md);
+    }
+    .card h3 { 
+      margin: 0 0 var(--space-3); 
+      font-size: var(--text-lg); 
+      font-family: var(--font-display);
+      color: var(--color-text); 
+    }
+    .card p { margin: 0; color: var(--color-text-muted); line-height: 1.6; }
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .card ul li {
+      padding-left: var(--space-5);
+      position: relative;
+      margin-bottom: var(--space-2);
+      color: var(--color-text-muted);
+    }
+    .card ul li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .kicker { 
+      color: var(--color-primary); font-size: var(--text-xs); 
+      text-transform: uppercase; letter-spacing: 0.08em; 
+      font-weight: 700; margin-bottom: var(--space-3); 
+      display: block;
+    }
+
+    .icon-card {
+      text-align: center;
+    }
+    .icon-card-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-primary-soft);
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+    }
+
+    .cta-panel {
+      background: linear-gradient(135deg, rgba(1,105,111,0.12), rgba(30,58,95,0.08));
+      border: 1px solid rgba(127,127,127,0.14);
+      border-radius: 28px; padding: clamp(var(--space-10), 6vw, var(--space-16));
+      box-shadow: var(--shadow-md); text-align: center;
+    }
+    .cta-panel h2 {
+      margin: 0 0 var(--space-4); font-family: var(--font-display); 
+      font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.1;
+    }
+    .cta-panel p { 
+      margin: 0 0 var(--space-6); max-width: 600px; 
+      color: var(--color-text-muted); margin-inline: auto;
+      font-size: var(--text-lg);
+    }
+    .cta-actions { 
+      display: flex; flex-wrap: wrap; gap: var(--space-3); 
+      justify-content: center; 
+    }
+
+    .info-box {
+      background: var(--color-surface);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-top: var(--space-10);
+      max-width: 600px;
+      margin-inline: auto;
+    }
+    .info-box h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin: 0 0 var(--space-4);
+      text-align: center;
+    }
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .info-item:last-child {
+      border-bottom: none;
+    }
+    .info-item strong {
+      color: var(--color-text);
+    }
+    .info-item span {
+      color: var(--color-text-muted);
+    }
+
+    .site-footer {
+      padding: var(--space-10) 0 var(--space-12);
+      border-top: 1px solid var(--color-divider);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.3fr 0.7fr; 
+      gap: var(--space-8); align-items: start;
+    }
+    .footer-links {
+      display: grid; gap: var(--space-2); 
+      color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+    .footer-note { color: var(--color-text-muted); max-width: 56ch; }
+    .footer-back {
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-divider);
+      text-align: center;
+    }
+
+    @media (min-width: 980px) {
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    @media (max-width: 979px) {
+      .site-nav {
+        position: absolute; left: 0; right: 0; top: 78px;
+        display: none; flex-direction: column; align-items: flex-start;
+        padding: var(--space-5) 1rem var(--space-6); 
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-divider);
+      }
+      .site-nav.open { display: flex; }
+      .menu-toggle { 
+        display: inline-flex; align-items: center; 
+        justify-content: center; 
+      }
+      .header-actions .btn { display: none; }
+      .hero-grid, .hero-stats, .grid-3, .grid-2, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="CRN Solutions home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 8.5 12 4l7 4.5v7L12 20l-7-4.5z"></path>
+            <path d="M9 10.5h6"></path>
+            <path d="M9 13.5h4"></path>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>CRN Solutions</strong>
+          <span>Microsoft 365 workflow specialists</span>
+        </span>
+      </a>
+
+      <div class="nav-wrap">
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#solutions">Solutions</a>
+          <a href="SmartBPM.html">SmartBPM</a>
+          <a href="training.html">Training</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">☰</button>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">◐</button>
+          <a class="btn btn-primary" href="#book">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Hands-on · 1-Day Workshop</span>
+          <h1>Power BI Dashboard in a Day</h1>
+          <p>Learn how to turn raw Excel data into an interactive, refreshable Power BI dashboard in just one day. Perfect for analysts and business users who want to automate reporting and tell better data stories.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#book">Reserve Your Seat</a>
+            <a class="btn btn-secondary" href="mailto:training@webparts360.com?subject=Inquiry%20about%20Power%20BI%20Dashboard%20in%20a%20Day">Ask a Question</a>
+          </div>
+          <div class="hero-stats">
+            <article class="stat-card">
+              <strong>1 Day</strong>
+              <span>End-to-end Power BI</span>
+            </article>
+            <article class="stat-card">
+              <strong>80%</strong>
+              <span>Time in hands-on labs</span>
+            </article>
+            <article class="stat-card">
+              <strong>1 Report</strong>
+              <span>Built from scratch</span>
+            </article>
+            <article class="stat-card">
+              <strong>0 Code</strong>
+              <span>No prior BI needed</span>
+            </article>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="placeholder-image">
+<iframe title="Financial Reporting (MGB)" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=34bee6b2-b6e9-43ed-8ff7-0d9e682ed7f6&autoAuth=true&ctid=dbf82228-0591-41ea-9d02-a5d918156b85" frameborder="0" allowFullScreen="true"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU'LL LEARN -->
+    <section id="outcomes">
+      <div class="container">
+        <div class="section-head">
+          <h2>What You'll Learn</h2>
+          <p>From raw data to a published, refreshable Power BI dashboard in one day</p>
+        </div>
+        <div class="grid-3">
+          <article class="card icon-card">
+            <div class="icon-card-icon">📥</div>
+            <h3>Connect & Clean Data</h3>
+            <p>Import Excel and other sources, fix common data issues, and prepare a clean dataset using Power Query.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">🧩</div>
+            <h3>Build a Data Model</h3>
+            <p>Create relationships between tables, set up lookup tables, and understand how a simple star schema works.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">➕</div>
+            <h3>Create DAX Measures</h3>
+            <p>Write essential measures like Total Revenue, Total Profit, and Profit Margin, plus basic time-intelligence metrics.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">📊</div>
+            <h3>Design Interactive Reports</h3>
+            <p>Build pages with charts, tables, cards, and slicers so users can explore sales, profit, and trends over time.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">☁️</div>
+            <h3>Publish & Refresh</h3>
+            <p>Publish your report to Power BI Service and configure scheduled refresh with a personal gateway.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">🚀</div>
+            <h3>Next-Step Confidence</h3>
+            <p>Leave with a working dashboard, reusable patterns, and a clear path to more advanced Power BI skills.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSE CONTENT -->
+    <section id="how" style="background: var(--color-surface); border-block: 1px solid var(--color-divider);">
+      <div class="container">
+        <div class="section-head">
+          <h2>Course Content</h2>
+          <p>Structured, hands-on agenda designed for busy professionals</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <span class="kicker">Morning</span>
+            <h3>Foundations, Data Prep & Modeling</h3>
+            <ul>
+              <li>Introduction: Power BI vs Excel, Power BI Desktop, Service & Mobile</li>
+              <li>Navigating the Power BI Desktop interface and key settings</li>
+              <li>Importing data from Excel and other common sources</li>
+              <li>Cleaning and transforming data with Power Query</li>
+              <li>Handling missing data, duplicates, and simple data quality issues</li>
+              <li>Building a basic data model with lookup tables and relationships</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="kicker">Afternoon</span>
+            <h3>DAX, Time Intelligence & Dashboards</h3>
+            <ul>
+              <li>Understanding calculated columns vs measures in DAX</li>
+              <li>Creating core business measures: revenue, profit, margin</li>
+              <li>Adding time-intelligence: last month, year-to-date, growth %</li>
+              <li>Designing interactive report pages with charts, tables, and slicers</li>
+              <li>Publishing to Power BI Service and creating a simple dashboard</li>
+              <li>Setting up scheduled refresh using a personal gateway</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO SHOULD ATTEND -->
+    <section id="who">
+      <div class="container">
+        <div class="section-head">
+          <h2>Who Should Attend</h2>
+          <p>For professionals who want to move beyond static Excel reports</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Business Analysts</h3>
+            <p>Turn spreadsheets into self-service dashboards your stakeholders can explore on their own.</p>
+          </article>
+          <article class="card">
+            <h3>Finance & Sales Teams</h3>
+            <p>Automate recurring management reports and track KPIs with near real-time data.</p>
+          </article>
+          <article class="card">
+            <h3>Managers & Executives</h3>
+            <p>Get a practical understanding of what Power BI can do and how to ask for the right dashboards.</p>
+          </article>
+          <article class="card">
+            <h3>Excel Power Users</h3>
+            <p>Bring your existing pivot table and formula skills into a more scalable BI environment.</p>
+          </article>
+          <article class="card">
+            <h3>New Power BI Users</h3>
+            <p>Start with best practices from day one instead of trial-and-error learning.</p>
+          </article>
+          <article class="card">
+            <h3>SME Owners & Ops Leads</h3>
+            <p>Build a first dashboard to monitor sales, operations, or performance without hiring a full BI team.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK / DETAILS -->
+    <section id="book">
+      <div class="container">
+        <div class="cta-panel">
+          <h2>Ready to Build Your First Power BI Dashboard?</h2>
+          <p>Join this one-day, hands-on workshop and walk away with a working dashboard and the skills to improve it after the course.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="mailto:training@webparts360.com?subject=Book%20Power%20BI%20Dashboard%20in%20a%20Day">Book Your Seat</a>
+            <a class="btn btn-secondary" href="mailto:training@webparts360.com?subject=Inquiry%20about%20Power%20BI%20Dashboard%20in%20a%20Day">Request Course Details</a>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h3>Course Details</h3>
+          <div class="info-item">
+            <strong>Duration</strong>
+            <span>1 full day (9:00 AM – 5:00 PM)</span>
+          </div>
+          <div class="info-item">
+            <strong>Format</strong>
+            <span>In-person / Live Online (interactive)</span>
+          </div>
+          <div class="info-item">
+            <strong>Level</strong>
+            <span>Beginner · No prior Power BI needed</span>
+          </div>
+          <div class="info-item">
+            <strong>You Should Bring</strong>
+            <span>Windows laptop with Power BI Desktop installed</span>
+          </div>
+          <div class="info-item">
+            <strong>Account</strong>
+            <span>Power BI account (Free or Pro, depending on your organisation)</span>
+          </div>
+          <div class="info-item">
+            <strong>Includes</strong>
+            <span>Practice dataset, lab guide, and post-course resources</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom: var(--space-4);">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 8.5 12 4l7 4.5v7L12 20l-7-4.5z"></path>
+                <path d="M9 10.5h6"></path>
+                <path d="M9 13.5h4"></path>
+              </svg>
+            </span>
+            <span class="brand-text">
+              <strong>CRN Solutions</strong>
+              <span>Microsoft 365 workflow specialists</span>
+            </span>
+          </div>
+          <p class="footer-note">CRN Solutions builds workflow, collaboration, and analytics solutions inside Microsoft 365 so teams can automate reporting and make better decisions with their data.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#services">Services</a>
+          <a href="SmartBPM.html">SmartBPM</a>
+          <a href="training.html">Training</a>
+          <a href="mailto:support@webparts360.com">Contact</a>
+        </div>
+      </div>
+      <div class="footer-back">
+        <a class="btn btn-secondary" href="training.html">← Back to Training Programs</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const themeButton = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      if (themeButton) {
+        themeButton.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', theme);
+          themeButton.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+        });
+      }
+
+      const menuButton = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('site-nav');
+      if (menuButton && nav) {
+        menuButton.addEventListener('click', function () {
+          const open = nav.classList.toggle('open');
+          menuButton.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            nav.classList.remove('open');
+            menuButton.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
