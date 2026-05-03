@@ -209,23 +209,20 @@
       font-size: var(--text-sm);
       color: var(--color-text-muted);
     }
+  .hero-visual img {
+    width: 100%;
+    height: auto;
+    border-radius: 22px;
+    display: block;
+  }
+  
+  .placeholder-image {
+    aspect-ratio: 16/9; /* Forces 16:9 ratio */
+    border-radius: 22px;
+    overflow: hidden; /* Clips anything outside */
+    background: linear-gradient(135deg, rgba(1,105,111,0.08), rgba(30,58,95,0.04));
+  }
 
-    .hero-visual {
-      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
-      border: 1px solid rgba(127,127,127,0.14);
-      border-radius: 28px; padding: var(--space-5);
-      box-shadow: var(--shadow-lg);
-    }
-    .placeholder-image {
-      border: 2px dashed rgba(127,127,127,0.28);
-      border-radius: 22px; min-height: 420px;
-      background:
-        linear-gradient(135deg, rgba(1,105,111,0.08), rgba(30,58,95,0.04)),
-        repeating-linear-gradient(135deg, transparent, transparent 18px, rgba(127,127,127,0.05) 18px, rgba(127,127,127,0.05) 36px);
-      display: grid; place-items: center;
-      padding: var(--space-8); text-align: center;
-      color: var(--color-text-muted);
-    }
     .placeholder-image strong {
       display: block; font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-2);
     }
