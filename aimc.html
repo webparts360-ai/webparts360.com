@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practical AI for HR Professionals | CRN Solutions</title>
+
+  <meta name="description" content="Master AI tools to automate recruitment, build smart HR assistants, and create personalized learning programs. 2-day HRDC-claimable masterclass by CRN Solutions." />
+
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+
+      --color-bg: #f7f6f2;
+      --color-surface: #fbfbf9;
+      --color-surface-2: #f1efe9;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6c65;
+      --color-text-faint: #9d9a93;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-primary-soft: #d9ecea;
+      --color-accent: #1e3a5f;
+      --color-success: #437a22;
+
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.875rem;
+      --radius-xl: 1.25rem;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 2px rgba(40, 37, 29, 0.06);
+      --shadow-md: 0 8px 24px rgba(40, 37, 29, 0.08);
+      --shadow-lg: 0 20px 48px rgba(40, 37, 29, 0.12);
+
+      --content-default: 1120px;
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font-body: 'General Sans', 'Inter', sans-serif;
+      --font-display: 'Cabinet Grotesk', 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #22211f;
+      --color-border: #393836;
+      --color-divider: #262523;
+      --color-text: #cdccca;
+      --color-text-muted: #9b9892;
+      --color-text-faint: #6e6b66;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #6eb0ba;
+      --color-primary-soft: #223335;
+      --color-accent: #88a8d8;
+      --color-success: #84bf63;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.28);
+      --shadow-lg: 0 20px 48px rgba(0,0,0,0.42);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--content-default));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute; left: -999px; top: 0;
+      background: var(--color-primary); color: white;
+      padding: var(--space-3) var(--space-4); z-index: 20;
+    }
+    .skip-link:focus { left: var(--space-4); top: var(--space-4); }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+      border-bottom: 1px solid rgba(127,127,127,0.14);
+    }
+
+    .header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-4); min-height: 78px;
+    }
+
+    .brand { display: flex; align-items: center; gap: var(--space-3); font-weight: 700; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      display: grid; place-items: center; color: white;
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .brand-text strong {
+      display: block; font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.02em;
+    }
+    .brand-text span { display: block; font-size: var(--text-xs); color: var(--color-text-muted); }
+
+    .nav-wrap { display: flex; align-items: center; gap: var(--space-4); }
+    .site-nav {
+      display: flex; align-items: center; gap: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+    .site-nav a:hover, .site-nav a:focus-visible { color: var(--color-text); }
+    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+    .theme-toggle, .menu-toggle {
+      min-width: 44px; min-height: 44px; border-radius: var(--radius-full);
+      border: 1px solid rgba(127,127,127,0.2); background: var(--color-surface);
+      color: var(--color-text); cursor: pointer;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .theme-toggle:hover, .menu-toggle:hover { transform: translateY(-1px); }
+    .menu-toggle { display: none; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+      min-height: 48px; padding: 0 var(--space-5);
+      border-radius: var(--radius-full); border: 1px solid transparent;
+      font-size: var(--text-sm); font-weight: 600;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--color-primary); color: white; }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary { background: var(--color-surface); border-color: rgba(127,127,127,0.18); }
+
+    main section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
+
+    .hero {
+      padding-top: var(--space-12);
+    }
+    .hero-grid {
+      display: grid; gap: var(--space-10); align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 0.35rem 0.75rem; border-radius: var(--radius-full);
+      background: var(--color-primary-soft); color: var(--color-primary);
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: var(--space-5) 0 var(--space-4);
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 5.2rem);
+      line-height: 0.98;
+      max-width: 18ch;
+    }
+    .hero p {
+      max-width: 62ch; color: var(--color-text-muted); margin: 0 0 var(--space-6);
+      font-size: var(--text-lg);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4); margin-top: var(--space-8);
+    }
+    .stat-card {
+      background: var(--color-surface); border: 1px solid rgba(127,127,127,0.14);
+      border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    .stat-card strong {
+      display: block; font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: var(--space-2); color: var(--color-primary);
+    }
+    .stat-card span {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .hero-visual {
+      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
+      border: 1px solid rgba(127,127,127,0.14);
+      border-radius: 28px; padding: var(--space-5);
+      box-shadow: var(--shadow-lg);
+    }
+    .placeholder-image {
+      border: 2px dashed rgba(127,127,127,0.28);
+      border-radius: 22px; min-height: 420px;
+      background:
+        linear-gradient(135deg, rgba(1,105,111,0.08), rgba(30,58,95,0.04)),
+        repeating-linear-gradient(135deg, transparent, transparent 18px, rgba(127,127,127,0.05) 18px, rgba(127,127,127,0.05) 36px);
+      display: grid; place-items: center;
+      padding: var(--space-8); text-align: center;
+      color: var(--color-text-muted);
+    }
+    .placeholder-image strong {
+      display: block; font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-2);
+    }
+
+    .section-head { 
+      text-align: center;
+      margin-bottom: var(--space-10);
+      max-width: 700px;
+      margin-inline: auto;
+    }
+    .section-head h2 {
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); 
+      line-height: 1.1; margin: 0 0 var(--space-4);
+    }
+    .section-head p { color: var(--color-text-muted); margin: 0; font-size: var(--text-lg); }
+
+    .grid-3 { display: grid; gap: var(--space-5); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { display: grid; gap: var(--space-5); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--color-surface); border: 1px solid rgba(127,127,127,0.14);
+      border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-md);
+    }
+    .card h3 { 
+      margin: 0 0 var(--space-3); 
+      font-size: var(--text-lg); 
+      font-family: var(--font-display);
+      color: var(--color-text); 
+    }
+    .card p { margin: 0; color: var(--color-text-muted); line-height: 1.6; }
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .card ul li {
+      padding-left: var(--space-5);
+      position: relative;
+      margin-bottom: var(--space-2);
+      color: var(--color-text-muted);
+    }
+    .card ul li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .kicker { 
+      color: var(--color-primary); font-size: var(--text-xs); 
+      text-transform: uppercase; letter-spacing: 0.08em; 
+      font-weight: 700; margin-bottom: var(--space-3); 
+      display: block;
+    }
+
+    .icon-card {
+      text-align: center;
+    }
+    .icon-card-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-primary-soft);
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+    .video-card {
+      background: var(--color-surface);
+      border: 1px solid rgba(127,127,127,0.14);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .video-card iframe {
+      width: 100%;
+      aspect-ratio: 9/16;
+      border: none;
+      display: block;
+    }
+
+    .cta-panel {
+      background: linear-gradient(135deg, rgba(1,105,111,0.12), rgba(30,58,95,0.08));
+      border: 1px solid rgba(127,127,127,0.14);
+      border-radius: 28px; padding: clamp(var(--space-10), 6vw, var(--space-16));
+      box-shadow: var(--shadow-md); text-align: center;
+    }
+    .cta-panel h2 {
+      margin: 0 0 var(--space-4); font-family: var(--font-display); 
+      font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.1;
+    }
+    .cta-panel p { 
+      margin: 0 0 var(--space-6); max-width: 600px; 
+      color: var(--color-text-muted); margin-inline: auto;
+      font-size: var(--text-lg);
+    }
+    .cta-actions { 
+      display: flex; flex-wrap: wrap; gap: var(--space-3); 
+      justify-content: center; 
+    }
+
+    .info-box {
+      background: var(--color-surface);
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-top: var(--space-10);
+      max-width: 600px;
+      margin-inline: auto;
+    }
+    .info-box h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin: 0 0 var(--space-4);
+      text-align: center;
+    }
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .info-item:last-child {
+      border-bottom: none;
+    }
+    .info-item strong {
+      color: var(--color-text);
+    }
+    .info-item span {
+      color: var(--color-text-muted);
+    }
+
+    .site-footer {
+      padding: var(--space-10) 0 var(--space-12);
+      border-top: 1px solid var(--color-divider);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.3fr 0.7fr; 
+      gap: var(--space-8); align-items: start;
+    }
+    .footer-links {
+      display: grid; gap: var(--space-2); 
+      color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+    .footer-note { color: var(--color-text-muted); max-width: 56ch; }
+    .footer-back {
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-divider);
+      text-align: center;
+    }
+
+    @media (min-width: 980px) {
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    @media (max-width: 979px) {
+      .site-nav {
+        position: absolute; left: 0; right: 0; top: 78px;
+        display: none; flex-direction: column; align-items: flex-start;
+        padding: var(--space-5) 1rem var(--space-6); 
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-divider);
+      }
+      .site-nav.open { display: flex; }
+      .menu-toggle { 
+        display: inline-flex; align-items: center; 
+        justify-content: center; 
+      }
+      .header-actions .btn { display: none; }
+      .hero-grid, .hero-stats, .grid-3, .grid-2, .video-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="CRN Solutions home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 8.5 12 4l7 4.5v7L12 20l-7-4.5z"></path>
+            <path d="M9 10.5h6"></path>
+            <path d="M9 13.5h4"></path>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>CRN Solutions</strong>
+          <span>Microsoft 365 workflow specialists</span>
+        </span>
+      </a>
+
+      <div class="nav-wrap">
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#solutions">Solutions</a>
+          <a href="SmartBPM.html">SmartBPM</a>
+          <a href="training.html">Training</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">☰</button>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">◐</button>
+          <a class="btn btn-primary" href="#book">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">HRDC Claimable · 2-Day Masterclass</span>
+          <h1>Practical AI for HR Professionals</h1>
+          <p>Transform recruitment, operations, and learning programs with AI. Automate workflows, build smart assistants, and create personalized content—no coding required.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#book">Book Your Seat</a>
+            <a class="btn btn-secondary" href="mailto:support@webparts360.com?subject=Inquiry%20about%20AI%20HR%20Masterclass">Ask a Question</a>
+          </div>
+          <div class="hero-stats">
+            <article class="stat-card">
+              <strong>17 hours</strong>
+              <span>Intensive Training</span>
+            </article>
+            <article class="stat-card">
+              <strong>3 Tools</strong>
+              <span>Gemini · NotebookLM · Sheets</span>
+            </article>
+            <article class="stat-card">
+              <strong>5 Skills</strong>
+              <span>From Recruitment to L&D</span>
+            </article>
+            <article class="stat-card">
+              <strong>1 Portal</strong>
+              <span>Unified AI-HR System</span>
+            </article>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="placeholder-image">
+            <div>
+              <strong>AI-Powered HR Transformation</strong>
+              <p style="margin: 0; font-size: var(--text-sm);">[ Hero Image Placeholder ]<br>Add course photo or AI workflow visualization</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="outcomes">
+      <div class="container">
+        <div class="section-head">
+          <h2>What You'll Learn</h2>
+          <p>Pragmatic AI solutions designed for real HR challenges</p>
+        </div>
+        <div class="grid-3">
+          <article class="card icon-card">
+            <div class="icon-card-icon">🤖</div>
+            <h3>Build Your AI HR Assistant</h3>
+            <p>Create a smart chatbot that answers policy questions instantly with cited, accurate responses from your company handbook.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">⚡</div>
+            <h3>Screen Candidates 5x Faster</h3>
+            <p>Use AI to analyze CVs for cultural fit and skills match—not just keywords—in minutes instead of hours.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">📋</div>
+            <h3>Automate Onboarding</h3>
+            <p>Generate personalized welcome emails, training schedules, and compliance checklists for every new hire.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">📊</div>
+            <h3>Design Smart L&D Programs</h3>
+            <p>Analyze performance data to identify skill gaps and create targeted training plans in hours, not weeks.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">📚</div>
+            <h3>Create Learning Content</h3>
+            <p>Transform your training materials into study guides, quizzes, video outlines, and podcast scripts automatically.</p>
+          </article>
+          <article class="card icon-card">
+            <div class="icon-card-icon">🔐</div>
+            <h3>Keep Your Data Secure</h3>
+            <p>Use "grounded" AI systems that keep company data private—no hallucinations, just cited answers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" style="background: var(--color-surface); border-block: 1px solid var(--color-divider);">
+      <div class="container">
+        <div class="section-head">
+          <h2>Course Content</h2>
+          <p>Practical, hands-on training focused on immediate workplace application</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <span class="kicker">Day 1</span>
+            <h3>Foundations & HR Operations</h3>
+            <ul>
+              <li>Introduction to AI tools for HR (Gemini, NotebookLM, Google Sheets)</li>
+              <li>Building your first AI assistant in 45 minutes</li>
+              <li>AI-driven candidate screening and skills matching</li>
+              <li>Personalized recruitment outreach automation</li>
+              <li>Creating the "HR Brain" knowledge chatbot</li>
+              <li>Automating onboarding workflows and compliance</li>
+              <li>Generating executive reports from operational data</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="kicker">Day 2</span>
+            <h3>Learning & Development + Integration</h3>
+            <ul>
+              <li>Synthesizing performance reviews for skill gap analysis</li>
+              <li>Designing data-driven L&D strategies</li>
+              <li>Creating personalized learning journeys</li>
+              <li>Generating multi-format training content (guides, scripts, quizzes)</li>
+              <li>Measuring training effectiveness and ROI</li>
+              <li>Capstone Project: Building your Unified AI-HR Portal</li>
+              <li>Implementation planning and next steps</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <h2>What Participants Say</h2>
+          <p>Hear from HR professionals who transformed their workflows with AI</p>
+        </div>
+        <div class="video-grid">
+          <article class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/bUMkilHg1Bk" 
+              title="UWC Berhad, COO"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </article>
+          <article class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/ZWJ2enZFY6o" 
+              title="Testimonial 2"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </article>
+          <article class="video-card">
+            <iframe 
+              src="https://www.youtube.com/embed/tkHH0F32t_s" 
+              title="Testimonial 3"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="who">
+      <div class="container">
+        <div class="section-head">
+          <h2>Who Should Attend</h2>
+          <p>Designed for HR professionals ready to work smarter with AI</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>HR Managers & Business Partners</h3>
+            <p>Spend less time on admin, more time on strategic people development.</p>
+          </article>
+          <article class="card">
+            <h3>Talent Acquisition Teams</h3>
+            <p>Find the right candidates faster without missing great cultural fits.</p>
+          </article>
+          <article class="card">
+            <h3>L&D Professionals</h3>
+            <p>Design personalized learning programs without creating content from scratch.</p>
+          </article>
+          <article class="card">
+            <h3>HR Operations</h3>
+            <p>Automate routine policy inquiries and compliance tasks.</p>
+          </article>
+          <article class="card">
+            <h3>People Analytics Teams</h3>
+            <p>Turn data into actionable insights and compelling reports.</p>
+          </article>
+          <article class="card">
+            <h3>Small HR Teams</h3>
+            <p>Gain AI leverage to compete with larger departments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="book">
+      <div class="container">
+        <div class="cta-panel">
+          <h2>Ready to Transform Your HR Operations?</h2>
+          <p>Join the next cohort and start working smarter with AI. Limited seats available.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="mailto:training@webparts360.com?subject=Book%20AI%20for%20HR%20Masterclass">Book Your Seat</a>
+            <a class="btn btn-secondary" href="mailto:training@webparts360.com?subject=Inquiry%20about%20AI%20HR%20Course">Request Information</a>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h3>Course Details</h3>
+          <div class="info-item">
+            <strong>Duration</strong>
+            <span>2 full days (17 hours)</span>
+          </div>
+          <div class="info-item">
+            <strong>Format</strong>
+            <span>In-person / Live Online</span>
+          </div>
+          <div class="info-item">
+            <strong>HRDC Claimable</strong>
+            <span>Yes · Accredited trainer</span>
+          </div>
+          <div class="info-item">
+            <strong>Includes</strong>
+            <span>All materials, lunch, certificate</span>
+          </div>
+          <div class="info-item">
+            <strong>Requirements</strong>
+            <span>Laptop, Google account, sample HR documents</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom: var(--space-4);">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 8.5 12 4l7 4.5v7L12 20l-7-4.5z"></path>
+                <path d="M9 10.5h6"></path>
+                <path d="M9 13.5h4"></path>
+              </svg>
+            </span>
+            <span class="brand-text">
+              <strong>CRN Solutions</strong>
+              <span>Microsoft 365 workflow specialists</span>
+            </span>
+          </div>
+          <p class="footer-note">CRN Solutions builds business-critical workflow, collaboration, and AI-enabled applications inside SharePoint, Teams, and Microsoft 365 for digital transformation teams and Microsoft partners.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#services">Services</a>
+          <a href="SmartBPM.html">SmartBPM</a>
+          <a href="training.html">Training</a>
+          <a href="mailto:support@webparts360.com">Contact</a>
+        </div>
+      </div>
+      <div class="footer-back">
+        <a class="btn btn-secondary" href="training.html">← Back to Training Programs</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const themeButton = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      if (themeButton) {
+        themeButton.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', theme);
+          themeButton.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+        });
+      }
+
+      const menuButton = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('site-nav');
+      if (menuButton && nav) {
+        menuButton.addEventListener('click', function () {
+          const open = nav.classList.toggle('open');
+          menuButton.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            nav.classList.remove('open');
+            menuButton.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
