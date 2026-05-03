@@ -221,9 +221,16 @@
       padding: var(--space-6);
       box-shadow: var(--shadow-sm);
     }
+    .card-link:hover .card {
+      cursor: pointer;
+      transform: translateY(-2px); /* optional hover effect */
+      border-color: var(--green);
+      box-shadow: 0 0 0 1px var(--green), var(--shadow-md);
+    }
     .card h3 {
       margin: 0 0 var(--space-3);
       font-size: var(--text-lg);
+      color: var(--color-primary); 
     }
     .card p {
       margin: 0;
@@ -415,6 +422,7 @@
           </a>
 
           <!-- Essential Power BI -->
+          <a href="pbimc.html" class="card-link">          
           <article class="card">
             <h3>Essential Power BI</h3>
             <p>
@@ -428,8 +436,10 @@
               <span class="meta-pill">Format: Public or in-house</span>
             </div>
           </article>
+          </a>
 
           <!-- Pragmatic AI series -->
+          <a href="aipmc.html" class="card-link">            
           <article class="card">
             <h3>Pragmatic AI series</h3>
             <p>
@@ -443,6 +453,7 @@
               <span class="meta-pill">Format: Customisable in-house</span>
             </div>
           </article>
+          </a>
         </div>
       </div>
     </section>
