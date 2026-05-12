@@ -371,7 +371,18 @@
         grid-template-columns: 1fr;
       }
       .section-head { flex-direction: column; align-items: flex-start; }
+    
+      /* NEW: make trust & credibility images bigger on mobile */
+      .logo-placeholder {
+        min-height: 220px;
+        padding: var(--space-4);
+      }
+    
+      .logo-placeholder img {
+        max-height: 200px !important;
+      }
     }
+    
   </style>
 </head>
 <body>
