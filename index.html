@@ -3,33 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRN Solutions | Microsoft 365 Workflow Specialists</title>
-  <style>
-    html.js [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity 700ms cubic-bezier(0.16,1,0.3,1),transform 700ms cubic-bezier(0.16,1,0.3,1);transition-delay:var(--reveal-delay,0ms);}
-    html.js [data-reveal].is-visible{opacity:1;transform:none;}
-    html.js [data-reveal="clip"]{opacity:0;transform:none;clip-path:inset(0 0 18% 0 round 24px);transition:opacity 800ms cubic-bezier(0.16,1,0.3,1),clip-path 800ms cubic-bezier(0.16,1,0.3,1);}
-    html.js [data-reveal="clip"].is-visible{opacity:1;clip-path:inset(0 0 0 0 round 24px);}
-    .site-header{transition:box-shadow 180ms cubic-bezier(0.16,1,0.3,1),background 180ms cubic-bezier(0.16,1,0.3,1);}
-    .site-header.is-scrolled{box-shadow:0 10px 30px rgba(40,37,29,0.08);}
-    .brand-logo-wrap{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--color-surface),var(--color-surface-2));border:1px solid rgba(127,127,127,0.14);overflow:hidden;box-shadow:var(--shadow-sm);}
-    .brand-logo-wrap img{width:28px;height:28px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.08));}
-    .brand:hover .brand-logo-wrap,.brand:focus-visible .brand-logo-wrap{transform:translateY(-1px) scale(1.03);transition:transform var(--transition);}
-    .site-nav a{position:relative;padding-block:0.35rem;}
-    .site-nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--color-primary);transform:scaleX(0);transform-origin:left;transition:transform var(--transition);}
-    .site-nav a:hover::after,.site-nav a:focus-visible::after{transform:scaleX(1);}
-    .proof-card,.card,.case-card,.process-step,.logo-placeholder{transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition),background var(--transition);}
-    .proof-card:hover,.case-card:hover,.process-step:hover,.logo-placeholder:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
-    .hero-visual,.cta-panel{position:relative;overflow:hidden;}
-    .hero-visual::after,.cta-panel::after{content:"";position:absolute;inset:auto -15% -35% auto;width:220px;height:220px;background:radial-gradient(circle, rgba(1,105,111,0.12), transparent 70%);pointer-events:none;transition:transform 800ms cubic-bezier(0.16,1,0.3,1);}
-    .hero-visual:hover::after,.cta-panel:hover::after{transform:translate(-18px,-18px);}
-    .hero-image{border-radius:22px;}
-    .w360-inline{display:inline-flex;align-items:center;gap:0.75rem;margin-bottom:var(--space-4);padding:0.45rem 0.8rem;border-radius:var(--radius-full);background:var(--color-surface);border:1px solid rgba(127,127,127,0.14);box-shadow:var(--shadow-sm);}
-    .w360-inline img{width:34px;height:34px;object-fit:contain;}
-    .w360-watermark{position:absolute;right:var(--space-4);bottom:var(--space-4);width:min(140px,28%);opacity:0.08;pointer-events:none;filter:grayscale(1);}
-    .theme-toggle svg{width:18px;height:18px;}
-    @media (prefers-reduced-motion: reduce){html.js [data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}.brand:hover .brand-logo-wrap,.proof-card:hover,.case-card:hover,.process-step:hover,.logo-placeholder:hover,.hero-visual:hover::after,.cta-panel:hover::after{transform:none!important}}
-  </style>
-  <!-- Google Analytics -->
+  <title>CRN Solutions | Microsoft 365 workflow applications</title>
+  <meta name="description" content="CRN Solutions builds business-critical workflow applications inside Microsoft 365 using SharePoint, Teams, Webparts360, and SmartBPM — plus pragmatic training for your teams." />
+
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8Y96KZHQGJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,776 +14,316 @@
     gtag('js', new Date());
     gtag('config', 'G-8Y96KZHQGJ');
   </script>
-  <meta name="description" content="CRN Solutions builds business-critical workflow, collaboration, and AI solutions inside SharePoint, Teams, and Microsoft 365." />
+  
   <link rel="preconnect" href="https://api.fontshare.com" />
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet" />
-  <style>
-    :root, [data-theme="light"] {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-5: 1.25rem;
-      --space-6: 1.5rem;
-      --space-8: 2rem;
-      --space-10: 2.5rem;
-      --space-12: 3rem;
-      --space-16: 4rem;
-      --space-20: 5rem;
-      --space-24: 6rem;
-      --color-bg: #f7f6f2;
-      --color-surface: #fbfbf9;
-      --color-surface-2: #f1efe9;
-      --color-border: #d4d1ca;
-      --color-divider: #dcd9d5;
-      --color-text: #28251d;
-      --color-text-muted: #6f6c65;
-      --color-text-faint: #9d9a93;
-      --color-primary: #01696f;
-      --color-primary-hover: #0c4e54;
-      --color-primary-soft: #d9ecea;
-      --color-accent: #1e3a5f;
-      --color-success: #437a22;
-      --radius-sm: 0.375rem;
-      --radius-md: 0.5rem;
-      --radius-lg: 0.875rem;
-      --radius-xl: 1.25rem;
-      --radius-full: 9999px;
-      --shadow-sm: 0 1px 2px rgba(40, 37, 29, 0.06);
-      --shadow-md: 0 8px 24px rgba(40, 37, 29, 0.08);
-      --shadow-lg: 0 20px 48px rgba(40, 37, 29, 0.12);
-      --content-default: 1120px;
-      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-      --font-body: 'General Sans', 'Inter', sans-serif;
-      --font-display: 'Cabinet Grotesk', 'Inter', sans-serif;
-    }
-
-    [data-theme="dark"] {
-      --color-bg: #171614;
-      --color-surface: #1c1b19;
-      --color-surface-2: #22211f;
-      --color-border: #393836;
-      --color-divider: #262523;
-      --color-text: #cdccca;
-      --color-text-muted: #9b9892;
-      --color-text-faint: #6e6b66;
-      --color-primary: #4f98a3;
-      --color-primary-hover: #6eb0ba;
-      --color-primary-soft: #223335;
-      --color-accent: #88a8d8;
-      --color-success: #84bf63;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-      --shadow-md: 0 8px 24px rgba(0,0,0,0.28);
-      --shadow-lg: 0 20px 48px rgba(0,0,0,0.42);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.6;
-      background: var(--color-bg);
-      color: var(--color-text);
-    }
-    img, svg { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container {
-      width: min(calc(100% - 2rem), var(--content-default));
-      margin-inline: auto;
-    }
-    .skip-link {
-      position: absolute; left: -999px; top: 0;
-      background: var(--color-primary); color: white;
-      padding: var(--space-3) var(--space-4); z-index: 20;
-    }
-    .skip-link:focus { left: var(--space-4); top: var(--space-4); }
-
-    .site-header {
-      position: sticky; top: 0; z-index: 10;
-      backdrop-filter: blur(14px);
-      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-      border-bottom: 1px solid rgba(127,127,127,0.14);
-    }
-    .header-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: var(--space-4); min-height: 78px;
-    }
-    .brand { display: flex; align-items: center; gap: var(--space-3); font-weight: 700; }
-    .brand-mark {
-      width: 42px; height: 42px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-      display: grid; place-items: center; color: white;
-      box-shadow: var(--shadow-sm);
-    }
-    .brand-mark svg { width: 22px; height: 22px; }
-    .brand-text strong {
-      display: block; font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.02em;
-    }
-    .brand-text span { display: block; font-size: var(--text-xs); color: var(--color-text-muted); }
-
-    .nav-wrap { display: flex; align-items: center; gap: var(--space-4); }
-    .site-nav {
-      display: flex; align-items: center; gap: var(--space-4);
-      font-size: var(--text-sm);
-      color: var(--color-text-muted);
-    }
-    .site-nav a:hover, .site-nav a:focus-visible { color: var(--color-text); }
-    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
-
-    .theme-toggle, .menu-toggle {
-      min-width: 44px; min-height: 44px; border-radius: var(--radius-full);
-      border: 1px solid rgba(127,127,127,0.2); background: var(--color-surface);
-      color: var(--color-text); cursor: pointer;
-      transition: transform var(--transition), background var(--transition);
-    }
-    .theme-toggle:hover, .menu-toggle:hover { transform: translateY(-1px); }
-    .menu-toggle { display: none; }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
-      min-height: 48px; padding: 0 var(--space-5);
-      border-radius: var(--radius-full); border: 1px solid transparent;
-      font-size: var(--text-sm); font-weight: 600;
-      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--color-primary); color: white; }
-    .btn-primary:hover { background: var(--color-primary-hover); }
-    .btn-secondary { background: var(--color-surface); border-color: rgba(127,127,127,0.18); }
-
-    main section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
-
-    .hero {
-      padding-top: var(--space-12);
-    }
-    .hero-grid {
-      display: grid; gap: var(--space-10); align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: var(--space-2);
-      padding: 0.35rem 0.75rem; border-radius: var(--radius-full);
-      background: var(--color-primary-soft); color: var(--color-primary);
-      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-    }
-    .hero h1 {
-      margin: var(--space-5) 0 var(--space-4);
-      font-family: var(--font-display);
-      font-size: clamp(2.6rem, 5vw, 5.2rem);
-      line-height: 0.98;
-      max-width: 12ch;
-    }
-    .hero p {
-      max-width: 62ch; color: var(--color-text-muted); margin: 0 0 var(--space-6);
-    }
-    .hero-actions, .cta-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
-    .hero-proof {
-      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-4); margin-top: var(--space-8);
-    }
-    .proof-card {
-      background: var(--color-surface); border: 1px solid rgba(127,127,127,0.14);
-      border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm);
-    }
-    .proof-card strong {
-      display: block; font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem);
-      margin-bottom: var(--space-1);
-    }
-    .hero-visual {
-      background: linear-gradient(180deg, var(--color-surface), var(--color-surface-2));
-      border: 1px solid rgba(127,127,127,0.14);
-      border-radius: 28px; padding: var(--space-5);
-      box-shadow: var(--shadow-lg);
-    }
-    .placeholder-image {
-      border: 2px dashed rgba(127,127,127,0.28);
-      border-radius: 22px; min-height: 420px;
-      background:
-        linear-gradient(135deg, rgba(1,105,111,0.08), rgba(30,58,95,0.04)),
-        repeating-linear-gradient(135deg, transparent, transparent 18px, rgba(127,127,127,0.05) 18px, rgba(127,127,127,0.05) 36px);
-      display: grid; place-items: center;
-      padding: var(--space-8); text-align: center;
-      color: var(--color-text-muted);
-    }
-    .placeholder-image strong {
-      display: block; font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-2);
-    }
-
-    .section-head { display: flex; justify-content: space-between; gap: var(--space-6); align-items: end; margin-bottom: var(--space-8); }
-    .section-head h2 {
-      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.02; margin: 0;
-    }
-    .section-head p { max-width: 58ch; color: var(--color-text-muted); margin: 0; }
-
-    .grid-3 { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .card {
-      background: var(--color-surface); border: 1px solid rgba(127,127,127,0.14);
-      border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-sm);
-    }
-    .card-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    
-    .card-link:hover .card {
-      cursor: pointer;
-      transform: translateY(-2px); /* optional hover effect */
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-md);
-    }
-    .card h3 { margin: 0 0 var(--space-3); font-size: var(--text-lg); color: var(--color-primary); }
-    .card p { margin: 0; color: var(--color-text-muted); }
-    .kicker { color: var(--color-primary); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: var(--space-3); }
-
-    .split-section {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8); align-items: start;
-    }
-    .check-list {
-      list-style: none; padding: 0; margin: var(--space-6) 0 0;
-      display: grid; gap: var(--space-3);
-    }
-    .check-list li {
-      display: flex; gap: var(--space-3); align-items: start;
-      padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-divider);
-    }
-    .check-list span:first-child {
-      width: 26px; height: 26px; border-radius: 50%; flex: 0 0 auto;
-      background: var(--color-primary-soft); color: var(--color-primary);
-      display: grid; place-items: center; font-weight: 700; font-size: 0.85rem;
-    }
-
-    .case-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .case-card {
-      background: var(--color-surface); border: 1px solid rgba(127,127,127,0.14);
-      border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-sm);
-    }
-    .case-media {
-      aspect-ratio: 16/10; border-bottom: 1px solid rgba(127,127,127,0.12);
-      background: linear-gradient(135deg, rgba(1,105,111,0.1), rgba(30,58,95,0.06));
-      display: grid; place-items: center; color: var(--color-text-muted); padding: var(--space-4); text-align: center;
-    }
-    .case-body { padding: var(--space-5); }
-    .case-body h3 { margin: 0 0 var(--space-2); font-size: 1.2rem; }
-    .case-body p { margin: 0 0 var(--space-4); color: var(--color-text-muted); }
-    .tag-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-    .tag {
-      display: inline-flex; padding: 0.35rem 0.65rem; border-radius: var(--radius-full);
-      font-size: var(--text-xs); background: var(--color-surface-2); color: var(--color-text-muted);
-      border: 1px solid rgba(127,127,127,0.12);
-    }
-
-    .process-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .process-step {
-      padding: var(--space-5); border-radius: var(--radius-xl); background: var(--color-surface);
-      border: 1px solid rgba(127,127,127,0.14);
-    }
-    .process-step strong {
-      display: inline-flex; width: 36px; height: 36px; border-radius: 50%;
-      align-items: center; justify-content: center; margin-bottom: var(--space-4);
-      background: var(--color-primary-soft); color: var(--color-primary);
-    }
-
-    .partners {
-      background: var(--color-surface);
-      border-block: 1px solid var(--color-divider);
-    }
-    .logo-row {
-      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--space-4);
-    }
-    .logo-placeholder {
-      min-height: 180px; border-radius: var(--radius-lg); border: 1px dashed rgba(127,127,127,0.24);
-      display: grid; place-items: center; color: var(--color-text-faint); background: var(--color-bg);
-      text-align: center; padding: var(--space-3);
-    }
-
-    .cta-panel {
-      background: linear-gradient(135deg, rgba(1,105,111,0.12), rgba(30,58,95,0.08));
-      border: 1px solid rgba(127,127,127,0.14);
-      border-radius: 28px; padding: clamp(var(--space-8), 5vw, var(--space-12));
-      box-shadow: var(--shadow-md);
-    }
-    .cta-panel h2 {
-      margin: 0 0 var(--space-4); font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1;
-    }
-    .cta-panel p { margin: 0 0 var(--space-6); max-width: 56ch; color: var(--color-text-muted); }
-
-    .site-footer {
-      padding: var(--space-10) 0 var(--space-12);
-      border-top: 1px solid var(--color-divider);
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 1.3fr 0.7fr; gap: var(--space-8);
-      align-items: start;
-    }
-    .footer-links {
-      display: grid; gap: var(--space-2); color: var(--color-text-muted); font-size: var(--text-sm);
-    }
-    .footer-note { color: var(--color-text-muted); max-width: 56ch; }
-
-    @media (min-width: 980px) {
-      .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
-    }
-
-    @media (max-width: 979px) {
-      .site-nav {
-        position: absolute; left: 0; right: 0; top: 78px;
-        display: none; flex-direction: column; align-items: flex-start;
-        padding: var(--space-5) 1rem var(--space-6); background: var(--color-bg);
-        border-bottom: 1px solid var(--color-divider);
-      }
-      .site-nav.open { display: flex; }
-      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
-      .header-actions .btn { display: none; }
-      .hero-proof, .grid-3, .case-grid, .process-grid, .logo-row, .footer-grid, .split-section {
-        grid-template-columns: 1fr;
-      }
-      .section-head { flex-direction: column; align-items: flex-start; }
-    
-      /* NEW: make trust & credibility images bigger on mobile */
-      .logo-placeholder {
-        min-height: 220px;
-        padding: var(--space-4);
-      }
-    
-      .logo-placeholder img {
-        max-height: 200px !important;
-      }
-    }
-    
-  </style>
+  <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
-  <script>document.documentElement.classList.add('js');</script>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+  <script>document.documentElement.classList.add("js");</script>
+
   <header class="site-header">
     <div class="container header-row">
-    <a class="brand" href="index.html" aria-label="CRN Solutions home">
-      <span class="brand-logo-wrap" aria-hidden="true">
-        <img
-          src="images/W360Logo.png"
-          alt="CRN Solutions logo"
-          loading="eager"
-          decoding="async"
-        />
-      </span>
-      <span class="brand-text">
-        <strong>CRN Solutions</strong>
-        <span>Microsoft 365 workflow specialists</span>
-      </span>
-    </a>
+      <a class="brand" href="index.html" aria-label="CRN Solutions home">
+        <span class="brand-logo-wrap" aria-hidden="true">
+          <img src="images/W360Logo.png" alt="CRN Solutions logo" loading="eager" decoding="async" />
+        </span>
+        <span class="brand-text">
+          <strong>CRN Solutions</strong>
+          <span>Microsoft 365 workflow specialists</span>
+        </span>
+      </a>
 
       <div class="nav-wrap">
         <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
           <a href="#services">Services</a>
-          <a href="#solutions">Solutions</a>
-          <a href="SmartBPM.html">SmartBPM</a>
-          <a href="training.html">Training</a>
-          <a href="#why-crn">Why CRN</a>
+          <a href="#webparts360">Webparts360</a>
+          <a href="#smartbpm">SmartBPM</a>
+          <a href="#case-studies">Case Studies</a>
+          <a href="#training">Training</a>
           <a href="#contact">Contact</a>
         </nav>
         <div class="header-actions">
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">☰</button>
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">◐</button>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme"></button>
           <a class="btn btn-primary" href="#contact">Book a discovery call</a>
         </div>
       </div>
     </div>
   </header>
 
-  <main id="main-content">
-    <section class="hero" id="top" data-reveal>
+  <main>
+    <!-- Hero -->
+    <section class="hero" data-reveal>
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Since 2007 · SharePoint to Teams evolution</span>
+          <div class="kicker">Microsoft 365 workflow applications</div>
           <h1>Business-critical workflow apps built inside Microsoft 365</h1>
-          <p>CRN Solutions helps digital transformation teams and partners deliver SharePoint, Teams, and AI-powered business applications faster, with less technical debt, while driving adoption and consumption across the Microsoft ecosystem their users already trust.
-</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Book a discovery call</a>
-            <a class="btn btn-secondary" href="#case-studies">See representative solutions</a>
-          </div>
-          <div class="hero-proof" aria-label="Key proof points">
-            <article class="proof-card" data-reveal style="--reveal-delay: 80ms;">
-            <strong data-count="1000">1,000+</strong>
-              <span>Applications migrated and modernized</span>
-            </article>
-            <article class="proof-card" data-reveal style="--reveal-delay: 160ms;">
-              <strong data-count="3">3X</strong> faster
-              <span>Delivery using configurable webparts</span>
-            </article>
-            <article class="proof-card" data-reveal style="--reveal-delay: 240ms;">
-              <strong data-count="20">20+</strong> years
-              <span>Microsoft platform expertise</span>
-            </article>
-          </div>
-        </div>
-        <div class="hero-visual" data-reveal="clip">
-          <img
-            src="images/heroimg.png"
-            alt="Webparts360 powering business-critical workflows in SharePoint and Teams" loading="eager" decoding="async"
-            class="hero-image"
-          />
-        </div>
-      </div>
-    </section>
-
-    <section id="webparts360" data-reveal>
-      <div class="container split-section">
-        <div>
-          <div class="kicker">The engine behind our solutions</div>
-          <div class="w360-inline" data-reveal style="--reveal-delay: 80ms;"><img src="W360Logo.svg" alt="Webparts360 logo" loading="lazy" decoding="async" /><span>Powered by the Webparts360 application framework</span></div>
-          <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.02; margin: 0;">
-            Webparts360: our web IDE for SharePoint Online
-          </h2>
-          <p style="margin-top: var(--space-4); color: var(--color-text-muted); max-width: 62ch;">
-            Webparts360 is the in-house framework that made us famous: a web IDE for SharePoint Online that lets us build business applications from three configurable building blocks—input, process, and output. It helps us deliver multi-state, document-heavy workflows faster while keeping performance under control and upgrades predictable.
+          <p>
+            CRN Solutions helps digital transformation teams and partners deliver SharePoint, Teams, and AI-powered business applications faster, with less technical debt, while driving adoption and consumption across the Microsoft ecosystem their users already trust. [file:17]
           </p>
-          <ul class="check-list">
-            <li>
-              <span>1</span>
-              <span>
-                <strong>Configure, don't constantly recode</strong><br>
-                Use XML settings, HTML for UI, and T-SQL for transaction logic to configure forms, processes, and views instead of rebuilding each app from scratch.
-              </span>
-            </li>
-            <li>
-              <span>2</span>
-              <span>
-                <strong>Built for every SharePoint version</strong><br>
-                Our consistent model carries solutions across SharePoint generations, turning upgrades into package-and-redeploy steps.
-              </span>
-            </li>
-            <li>
-              <span>3</span>
-              <span>
-                <strong>Tuned for serious workflows</strong><br>
-                Built for multi-state, document-centric workflows where approvals, documents, and performance matter—and where keeping IT fully within existing SharePoint infrastructure.
-              </span>
-            </li>
-          </ul>
-          <div class="hero-actions" style="margin-top: var(--space-6);">
-            <a class="btn btn-primary" href="mailto:support@webparts360.com?subject=Webparts360%20workflow%20inquiry">Discuss your workflow with Webparts360</a>
-            <a class="btn btn-secondary" href="#case-studies">See solutions built on this engine</a>
+          <div class="tag-row">
+            <span class="tag-pill">1,000+ applications migrated and modernised</span>
+            <span class="tag-pill">3× faster delivery using configurable webparts</span>
+            <span class="tag-pill">20+ years platform experience</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Talk about your workflow app</a>
+            <a class="btn btn-secondary" href="#services">Explore services</a>
           </div>
         </div>
 
-        <div class="card" data-reveal style="--reveal-delay: 140ms;">
-          <div class="hero-visual" data-reveal="clip">
-            <img
-              src="images/Webparts360-IDE.png"
-              alt="Webparts360 UI"
-              title="Webparts360 AppStudio Designer"
-            />
-          <img class="w360-watermark" src="W360Logo.svg" alt="" loading="lazy" decoding="async" /></div>
+        <div>
+          <div class="card">
+            <h3>When you should talk to us</h3>
+            <ul style="margin: 0; padding-left: 1.1rem; color: var(--color-text-muted);">
+              <li>You have serious internal workflows but do not want another custom stack to maintain. [file:17]</li>
+              <li>You want to modernise legacy SharePoint or internal apps into Microsoft 365. [file:17]</li>
+              <li>You need workflow applications that live inside Teams and SharePoint, not outside them. [file:17]</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="partners" data-reveal>
+    <!-- Webparts360 -->
+    <section id="webparts360" data-reveal style="background: var(--color-surface-2);">
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="kicker">Trust and credibility</div>
-            <h2>Built for discerning clients and delivery partners</h2>
+            <div class="kicker">Webparts360</div>
+            <h2>Our web IDE for SharePoint Online</h2>
           </div>
-          <p>Recognized with regional ICT awards and trusted by the Microsoft MVP community, we've supported conferences and enterprise projects across Malaysia, APAC, and global Microsoft 365 ecosystems.</p>
+          <p>
+            Webparts360 is our in-house framework: a web IDE for SharePoint Online that lets us build business applications from three configurable building blocks — input, process, and output — so we can deliver multi-state, document-heavy workflows faster while keeping performance and upgrades predictable. [file:17]
+          </p>
         </div>
-        <div class="logo-row">
-          <div class="logo-placeholder">
-            <img
-              src="images/APICTA-Jakarta.jpg"
-              alt="APICTA award recognition"
-              title="Asia Pacific ICT Alliance Award - Best of Applications & Infrastructure Tools"
-              style="max-width: 100%; max-height: 160px; object-fit: contain;"
-            />
-            Asia Pacific ICT Award
-          </div>
-          <div class="logo-placeholder">
-            <img
-              src="images/AMP2023.jpg"
-              alt="AOS, AMS, AMP"
-              title="Organizer of Azure, Microsoft 365, SharePoint conferences in KL since 2018"
-              style="max-width: 100%; max-height: 160px; object-fit: contain;"
-            />
-            Conference Organizer
-          </div>
-          <div class="logo-placeholder">
-            <img
-              src="images/SPC2009.jpg"
-              alt="Exhibition at Anaheim"
-              title="First Malaysia ISV Partner showcase at SPC 2009, Las Vegas"
-              style="max-width: 100%; max-height: 160px; object-fit: contain;"
-            />
-            SharePoint Conference
-          </div>
-          <div class="logo-placeholder">
-            <img
-              src="images/SPC2012-Interview.jpg"
-              alt="Exhibition at Los Angeles"
-              title="SharePoint TV Interview 2012, Las Vegas"
-              style="max-width: 100%; max-height: 160px; object-fit: contain;"
-            />
-            SharePoint TV
-          </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Configure, don’t constantly recode</h3>
+            <p>
+              Use XML settings, HTML for UI, and T-SQL for transaction logic to configure forms, processes, and views instead of rebuilding each app from scratch. [file:17]
+            </p>
+          </article>
+          <article class="card">
+            <h3>Built for every SharePoint version</h3>
+            <p>
+              Our consistent model carries solutions across SharePoint generations, turning upgrades into package‑and‑redeploy steps. [file:17]
+            </p>
+          </article>
+          <article class="card">
+            <h3>Tuned for serious workflows</h3>
+            <p>
+              Built for multi‑state, document‑centric workflows where approvals, documents, and performance matter and where IT wants to stay within existing SharePoint infrastructure. [file:17]
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- Services overview -->
     <section id="services" data-reveal>
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="kicker">What we do</div>
-            <h2>Specialist services for organizations that live in Microsoft 365</h2>
+            <div class="kicker">Specialist services</div>
+            <h2>For organisations that live in Microsoft 365</h2>
           </div>
-          <p>We help clients extend SharePoint, Teams, and Microsoft 365 into operational systems of engagement without defaulting to disconnected tools, unnecessary complexity, or fragile one-off builds.</p>
+          <p>
+            We help clients extend SharePoint, Teams, and Microsoft 365 into operational systems of engagement without defaulting to disconnected tools, unnecessary complexity, or fragile one‑off builds. [file:17]
+          </p>
         </div>
+
         <div class="grid-3">
           <article class="card">
             <h3>Custom M365 workflow applications</h3>
-            <p>Build approval systems, requests, case handling, dashboards, and operational workflows inside SharePoint and Teams with business-ready structure from day one.</p>
+            <p>
+              Build approval systems, requests, case handling, dashboards, and operational workflows inside SharePoint and Teams with business‑ready structure from day one. [file:17]
+            </p>
           </article>
           <article class="card">
-            <h3>AI-enabled business solutions</h3>
-            <p>Add intelligent assistance, triage, summarization, and decision support to workflows where users already collaborate, instead of creating yet another disconnected app.</p>
+            <h3>AI‑enabled business solutions</h3>
+            <p>
+              Add intelligent assistance, triage, summarisation, and decision support to workflows where users already collaborate, instead of creating yet another disconnected app. [file:17]
+            </p>
           </article>
           <article class="card">
-            <h3>Migration and modernization</h3>
-            <p>Move legacy internal applications, aging workflow solutions, and collaboration-heavy processes into modern Microsoft 365 experiences with lower long-term debt.</p>
+            <h3>Migration and modernisation</h3>
+            <p>
+              Move legacy internal applications and aging workflow solutions into modern Microsoft 365 experiences with lower long‑term debt. [file:17]
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="solutions" data-reveal>
-      <div class="container split-section">
-        <div>
-          <div class="kicker">Why it works</div>
-          <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.02; margin: 0;">A proven way to build serious internal systems without overengineering the stack</h2>
-          <p style="margin-top: var(--space-4); color: var(--color-text-muted); max-width: 62ch;">Our approach focuses on the three essentials every business application needs: data entry with processing, output for interfaces and reporting, and role-based navigation. That foundation makes it possible to deliver complex business solutions faster while staying close to the Microsoft platform your teams already use.</p>
-          <ul class="check-list">
-            <li><span>1</span><span><strong>Reduce technical debt</strong><br>Keep more of the workload within Microsoft 365 instead of proliferating disconnected services and custom stacks.</span></li>
-            <li><span>2</span><span><strong>Move faster</strong><br>Use proven building blocks and delivery experience to launch and evolve business-critical solutions more quickly.</span></li>
-            <li><span>3</span><span><strong>Support real operational complexity</strong><br>Handle approvals, reporting, collaboration, and process visibility for serious internal workloads.</span></li>
-          </ul>
-        </div>
-        <div class="card" data-reveal style="--reveal-delay: 140ms;">
-          <div class="hero-visual" data-reveal="clip">
-            <img
-              src="images/SmartBPM-Architect.png"
-              alt="Teams Architecture"
-              title="Teams Add-in Solution Architecture"
-            />
+    <!-- SmartBPM -->
+    <section id="smartbpm" data-reveal style="background: var(--color-surface-2);">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">SmartBPM</div>
+            <h2>Workflow engine closer to where work already happens</h2>
           </div>
+          <p>
+            SmartBPM is our productised workflow capability for organisations that need configurable approvals, process visibility, form‑based transactions, and structured collaboration inside Microsoft 365. [file:17]
+          </p>
+        </div>
+
+        <div class="list-card">
+          <ul>
+            <li>Configurable forms, process steps, and business logic. [file:17]</li>
+            <li>Inbox, notifications, dashboards, and approval visibility. [file:17]</li>
+            <li>Designed to work within SharePoint and Teams environments. [file:17]</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="smartbpm" data-reveal>
-      <!-- FIX 3: Restructured split-section — both columns now correctly sit inside .container.split-section -->
-      <!-- FIX 4: Added width/aspect-ratio to iframe so it fills its card responsively -->
-      <div class="container split-section">
-        <div class="card">
-          <iframe
-            src="https://www.youtube.com/embed/upWacfuP4Qs"
-            title="Webparts360 SmartBPM Explainer"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-lg);"
-          ></iframe>
-        </div>
-        <div>
-          <div class="kicker">Featured product</div>
-          <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.02; margin: 0;">SmartBPM brings your workflow engine closer to where work already happens</h2>
-          <p style="margin-top: var(--space-4); color: var(--color-text-muted);">SmartBPM is CRN Solutions' productized workflow capability for organizations that need configurable approvals, process visibility, form-based transactions, and structured collaboration inside Microsoft 365.</p>
-          <ul class="check-list">
-            <li><span>✓</span><span>Configurable forms, process steps, and business logic</span></li>
-            <li><span>✓</span><span>Inbox, notifications, dashboards, and approval visibility</span></li>
-            <li><span>✓</span><span>Designed to work within SharePoint and Teams environments</span></li>
-          </ul>
-          <div class="hero-actions" style="margin-top: var(--space-6);">
-            <a class="btn btn-primary" href="mailto:support@webparts360.com?subject=SmartBPM%20Demo%20Request">Ask for a SmartBPM walkthrough</a>
-            <a class="btn btn-secondary" href="#services">See service fit</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- Case studies -->
     <section id="case-studies" data-reveal>
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="kicker">Representative solutions</div>
-            <h2>Proof from business-critical use cases</h2>
+            <div class="kicker">Proof from business‑critical use cases</div>
+            <h2>Representative projects across regulated and complex environments</h2>
           </div>
-          <p>Because many of our clients operate under strict confidentiality, we present representative industry cases that demonstrate workflow complexity, platform depth, and business relevance without disclosing identities.</p>
+          <p>
+            Because many of our clients operate under strict confidentiality, these are representative industry cases that demonstrate workflow complexity, platform depth, and business relevance without disclosing identities. [file:17]
+          </p>
         </div>
-        <div class="case-grid">
-          <article class="case-card">
-            <div class="case-media">
-              <img
-                src="images/pexels-brewery.jpg"
-                alt="brewery and distributor workflow system"
-                title="Brewery and distributor workflow system"
-              />
-            </div>
-            <div class="case-body">
-              <h3>Dealer approval workflows for a major brewery and distributor</h3>
-              <p>Built the systems of engagement supporting sales and marketing approvals before confirmed transactions were posted into SAP.</p>
-              <div class="tag-row">
-                <span class="tag">SharePoint</span>
-                <span class="tag">Approvals</span>
-                <span class="tag">SAP integration</span>
-              </div>
-            </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Dealer approvals for a major brewery</h3>
+            <p>
+              Built systems of engagement supporting sales and marketing approvals before confirmed transactions were posted into SAP. [file:17]
+            </p>
           </article>
-          <article class="case-card">
-            <div class="case-media">
-              <img
-                src="images/pexels-hedgefund.jpg"
-                alt="hedge fund reporting and portfolio solution"
-                title="Primebroker Margin Call Reporting"
-              />
-            </div>
-            <div class="case-body">
-              <h3>Operational reporting for an Australian private hedge fund</h3>
-              <p>Implemented prime broker margin call reporting and portfolio optimization workflows using SharePoint for a sophisticated financial operations context.</p>
-              <div class="tag-row">
-                <span class="tag">Reporting</span>
-                <span class="tag">SharePoint</span>
-                <span class="tag">Finance</span>
-              </div>
-            </div>
+          <article class="card">
+            <h3>Operational reporting for a private hedge fund</h3>
+            <p>
+              Implemented prime broker margin‑call reporting and portfolio optimisation workflows using SharePoint in a sophisticated financial operations context. [file:17]
+            </p>
           </article>
-          <article class="case-card">
-            <div class="case-media">
-              <img
-                src="images/aircond.jpg"
-                alt="manufacturing R&D and ECN workflow solution"
-                title="manufacturing R&D and ECN workflow solution"
-              />
-            </div>
-            <div class="case-body">
-              <h3>R&amp;D and ECN coordination for a global manufacturer</h3>
-              <p>Supported structured product and engineering workflows inside SharePoint for research, change management, and cross-functional coordination.</p>
-              <div class="tag-row">
-                <span class="tag">R&amp;D projects</span>
-                <span class="tag">ECN</span>
-                <span class="tag">Manufacturing</span>
-              </div>
-            </div>
+          <article class="card">
+            <h3>R&amp;D and ECN coordination for a manufacturer</h3>
+            <p>
+              Supported structured product and engineering workflows inside SharePoint for research, change management, and cross‑functional coordination. [file:17]
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="why-crn" data-reveal>
+    <!-- Differentiation -->
+    <section data-reveal style="background: var(--color-surface-2);">
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="kicker">Why CRN Solutions</div>
-            <h2>Not a generic dev shop. A challenger specialist in Microsoft-native business applications.</h2>
+            <div class="kicker">Not a generic dev shop</div>
+            <h2>A challenger specialist in Microsoft‑native business applications</h2>
           </div>
-          <p>Your buyers need to know why they should choose you over a Power Platform-first build, a generic software house, or an internal team piecing things together under pressure.</p>
+          <p>
+            Your buyers need to know why they should choose you over a Power Platform‑first build, a generic software house, or an internal team piecing things together under pressure. [file:17]
+          </p>
         </div>
-        <div class="process-grid">
-          <article class="process-step">
-            <strong>01</strong>
+
+        <div class="grid-3">
+          <article class="card">
             <h3>Deep platform history</h3>
-            <p>You have delivered on Microsoft collaboration platforms through multiple technology cycles since 2007.</p>
+            <p>
+              You have delivered on Microsoft collaboration platforms through multiple technology cycles since 2007. [file:17]
+            </p>
           </article>
-          <article class="process-step">
-            <strong>02</strong>
+          <article class="card">
             <h3>Faster solution delivery</h3>
-            <p>Your reusable delivery approach supports faster outcomes without sacrificing structure or maintainability.</p>
+            <p>
+              Your reusable delivery approach supports faster outcomes without sacrificing structure or maintainability. [file:17]
+            </p>
           </article>
-          <article class="process-step">
-            <strong>03</strong>
+          <article class="card">
             <h3>Better fit for internal workloads</h3>
-            <p>You focus on serious operational workflows inside tools users already know rather than forcing another application estate.</p>
+            <p>
+              You focus on serious operational workflows inside tools users already know rather than forcing another application estate. [file:17]
+            </p>
           </article>
-          <article class="process-step">
-            <strong>04</strong>
-            <h3>Boutique seniority</h3>
-            <p>Clients engage specialists who understand collaboration architecture, process design, and practical enterprise delivery.</p>
-          </article>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-4);">
+          <h3>Boutique seniority</h3>
+          <p>
+            Clients engage specialists who understand collaboration architecture, process design, and practical enterprise delivery. [file:17]
+          </p>
         </div>
       </div>
     </section>
 
+    <!-- Training -->
     <section id="training" data-reveal>
       <div class="container">
         <div class="section-head">
           <div>
-            <div class="kicker">HRDF-claimable training</div>
-            <h2>Pragmatic Modern Work masterclasses for your teams</h2>
+            <div class="kicker">Pragmatic Modern Work masterclasses</div>
+            <h2>Hands‑on, HRDF‑claimable training for your teams</h2>
           </div>
           <p>
-            We design hands-on, HRDF-claimable training that reflects how people actually work with Microsoft 365 and AI.
-            Choose from public intakes or in-house, 1–2 day masterclasses that connect tools to real collaboration,
-            reporting, and people-operations scenarios.
+            We design training that reflects how people actually work with Microsoft 365 and AI. Choose from public intakes or in‑house 1–2 day masterclasses that connect tools to real collaboration, reporting, and people‑operations scenarios. [file:17]
           </p>
         </div>
-    
+
         <div class="grid-3">
-          <a href="spmc.html" class="card-link">
-            <article class="card">
-              <h3>SharePoint Masterclass</h3>
-              <p>
-                A 2-day, hands-on course where participants build a working intranet on Microsoft 365 – combining SharePoint,
-                Teams, and Planner for collaboration, document management, lists, simple approvals with Power Automate,
-                better search, and practical governance.
-              </p>
+          <article class="card">
+            <h3>SharePoint Masterclass</h3>
+            <p>
+              A 2‑day, hands‑on course where participants build a working intranet on Microsoft 365 using SharePoint, Teams, and Planner, with practical governance and simple approvals. [file:17]
+            </p>
+            <a class="btn btn-secondary" href="spmc.html">View SharePoint Masterclass</a>
           </article>
-          </a>
-          <a href="pbimc.html" class="card-link">
-            <article class="card">
-              <h3>Essential Power BI</h3>
-              <p>
-                A dashboard-in-a-day style introduction to Power BI. Participants learn how to connect and shape data,
-                build interactive reports with drill-through, and publish dashboards that business stakeholders can actually
-                use to make decisions.
-              </p>
-            </article>
-          </a>
-          <a href="aimc.html" class="card-link">          
-            <article class="card">
-              <h3>Pragmatic AI series</h3>
-              <p>
-                A 2-day executive deep dive into applying AI tools such as ChatGPT, Claude, Gemini, Copilot and Perplexity to
-                specific workloads – including HR analytics, recruitment, L&amp;D, and HR operations – with exercises tailored to your context.
-              </p>
-            </article>
-          </a>
-        </div>
-    
-        <div class="hero-actions" style="margin-top: var(--space-6);">
-          <a class="btn btn-primary" href="training.html">Explore training programmes</a>
-          <a class="btn btn-secondary" href="mailto:support@webparts360.com?subject=Inquire%20for%20in-house%20class">Ask about an in-house class</a>
+          <article class="card">
+            <h3>Essential Power BI</h3>
+            <p>
+              A dashboard‑in‑a‑day introduction to Power BI. Participants connect and shape data, build interactive reports with drill‑through, and publish dashboards stakeholders can use to make decisions. [file:17]
+            </p>
+            <a class="btn btn-secondary" href="pbimc.html">View Power BI workshop</a>
+          </article>
+          <article class="card">
+            <h3>Pragmatic AI series</h3>
+            <p>
+              A 2‑day executive deep dive into applying tools such as ChatGPT, Claude, Gemini, Copilot, and Perplexity to workloads including HR analytics, recruitment, L&amp;D, and HR operations. [file:17]
+            </p>
+            <a class="btn btn-secondary" href="aimc.html">View AI for HR masterclass</a>
+          </article>
         </div>
       </div>
     </section>
-    
-    <section id="contact" data-reveal>
+
+    <!-- Contact -->
+    <section id="contact" data-reveal style="background: var(--color-surface-2);">
       <div class="container">
         <div class="cta-panel">
-          <div class="kicker">Start the conversation</div>
-          <h2>Book a discovery call to assess your Microsoft 365 workflow opportunity</h2>
-          <p>If you are deciding between SharePoint, Teams, Power Platform, custom development, or modernization of a legacy internal system, we can help you identify the right architecture and the fastest path to value.</p>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="mailto:support@webparts360.com?subject=Book%20a%20discovery%20call">Book a discovery call</a>
-            <a class="btn btn-secondary" href="mailto:support@webparts360.com?subject=Request%20for%20demonstration">Request a demonstration</a>
+          <div>
+            <div class="kicker">Next steps</div>
+            <h2>Book a discovery call to assess your Microsoft 365 workflow opportunity</h2>
+            <p>
+              If you are deciding between SharePoint, Teams, Power Platform, custom development, or modernisation of a legacy internal system, we can help you identify the right architecture and the fastest path to value. [file:17]
+            </p>
+          </div>
+          <div class="cta-inner-card">
+            <ul>
+              <li>Discuss your current SharePoint and Teams landscape.</li>
+              <li>Map candidate workflows for Webparts360 or SmartBPM.</li>
+              <li>Align on a pragmatic training or enablement plan.</li>
+            </ul>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="mailto:info@webparts360.com?subject=Discovery%20call%20about%20Microsoft%20365%20workflow%20apps">
+                Email to request a call
+              </a>
+              <a class="btn btn-secondary" href="training.html">
+                View training options
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -818,20 +335,24 @@
       <div>
         <div class="brand" style="margin-bottom: var(--space-4);">
           <span class="brand-logo-wrap" aria-hidden="true">
-            <img src="W360Logo.svg" alt="" loading="lazy" decoding="async" />
+            <img src="images/W360Logo.png" alt="CRN Solutions logo" loading="lazy" decoding="async" />
           </span>
           <span class="brand-text">
             <strong>CRN Solutions</strong>
             <span>Microsoft 365 workflow specialists</span>
           </span>
         </div>
-        <p class="footer-note">CRN Solutions builds business-critical workflow, collaboration, and AI-enabled applications inside SharePoint, Teams, and Microsoft 365 for digital transformation teams and Microsoft partners.</p>
+        <p class="footer-note">
+          CRN Solutions builds workflow, collaboration, reporting, and AI‑enabled applications inside SharePoint, Teams, and Microsoft 365 — and equips your teams with pragmatic training to adopt them. [file:17]
+        </p>
       </div>
       <div class="footer-links">
         <a href="#services">Services</a>
+        <a href="#webparts360">Webparts360</a>
         <a href="#smartbpm">SmartBPM</a>
         <a href="#case-studies">Case Studies</a>
         <a href="#training">Training</a>
+        <a href="#contact">Book a discovery call</a>
       </div>
     </div>
   </footer>
@@ -887,31 +408,6 @@
 
       document.querySelectorAll('[data-reveal]').forEach(function(el){
         if(observer){ observer.observe(el); } else { el.classList.add('is-visible'); }
-      });
-
-      const counters = document.querySelectorAll('[data-count]');
-      const counterObserver = 'IntersectionObserver' in window ? new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(!entry.isIntersecting) return;
-          const el = entry.target;
-          const target = Number(el.getAttribute('data-count'));
-          const suffix = el.textContent.includes('+') ? '+' : (el.textContent.includes('X') ? 'X' : '');
-          const duration = 1100;
-          const start = performance.now();
-          function tick(now){
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const value = Math.round(target * eased);
-            el.textContent = value.toLocaleString() + suffix;
-            if(progress < 1){ requestAnimationFrame(tick); }
-          }
-          requestAnimationFrame(tick);
-          counterObserver.unobserve(el);
-        });
-      }, { threshold: 0.5 }) : null;
-
-      counters.forEach(function(el){
-        if(counterObserver){ counterObserver.observe(el); }
       });
 
       function syncHeader(){
