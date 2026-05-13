@@ -389,6 +389,43 @@ main section + section {
   text-align: center; padding: var(--space-3);
 }
 
+/* Quote */
+.quote-block {
+  background: var(--color-primary-soft);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(1,105,111,0.2);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+.quote-block strong {
+  color: var(--color-primary-hover);
+}
+
+/* List  */
+.list-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(127,127,127,0.14);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+.list-card h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+  color: var(--color-primary);
+}
+.list-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--color-text-muted);
+}
+.list-card li {
+  margin-bottom: 0.35rem;
+}
+
 /* CTA */
 
 .cta-panel {
