@@ -270,19 +270,37 @@ main section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
 }
 
 .check-list {
-  list-style: none; padding: 0; margin: var(--space-6) 0 0;
-  display: grid; gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0 0;
+  display: grid;
+  gap: var(--space-3);
 }
+
 .check-list li {
-  display: flex; gap: var(--space-3); align-items: start;
-  padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-divider);
 }
-.check-list span:first-child {
-  width: 26px; height: 26px; border-radius: 50%; flex: 0 0 auto;
-  background: var(--color-primary-soft); color: var(--color-primary);
-  display: grid; place-items: center; font-weight: 700; font-size: 0.85rem;
+
+/* Number badge – make it circular and fixed size */
+.check-list li > span.badge {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.85rem;
 }
-.check-list li span:last-child {
+
+/* Text block takes the rest of the width */
+.check-list li > span.body {
   flex: 1 1 auto;
 }
 
