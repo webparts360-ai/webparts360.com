@@ -282,6 +282,9 @@ main section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
   background: var(--color-primary-soft); color: var(--color-primary);
   display: grid; place-items: center; font-weight: 700; font-size: 0.85rem;
 }
+.check-list li span:last-child {
+  flex: 1 1 auto;
+}
 
 /* Case studies */
 
