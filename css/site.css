@@ -339,6 +339,37 @@ main section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
   background: var(--color-primary-soft); color: var(--color-primary);
 }
 
+/* Testimonials video grid */
+
+.video-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.video-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(127,127,127,0.14);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4);
+}
+
+/* Make iframes responsive, good for YouTube Shorts */
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 9 / 16; /* vertical video */
+  border: 0;
+  border-radius: var(--radius-lg);
+}
+
+/* Stack on mobile */
+@media (max-width: 979px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Partners */
 
 .partners {
